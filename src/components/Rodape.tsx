@@ -10,6 +10,9 @@ export default function Rodape() {
           <p className="mt-3 max-w-md text-sm leading-6 text-stone-400">Pessoas, cultura e ideias trabalhando juntas para criar oportunidades.</p>
         </div>
         <div className="flex flex-col gap-3 text-sm font-semibold text-teal-200">
+          <Link to="/sobre" className="hover:text-white">A CCS</Link>
+          <Link to="/setores" className="hover:text-white">Setores</Link>
+          <Link to="/valores" className="hover:text-white">Valores</Link>
           <Link to="/eventos" className="hover:text-white">Eventos e resultados</Link>
           <Link to="/" className="hover:text-white">Voltar ao início ↑</Link>
         </div>

@@ -1,9 +1,9 @@
 import { Link, NavLink } from 'react-router-dom'
 
 const linksSecoes = [
-  { nome: 'A CCS', destino: '/#sobre' },
-  { nome: 'Setores', destino: '/#setores' },
-  { nome: 'Valores', destino: '/#valores' },
+  { nome: 'A CCS', destino: '/sobre' },
+  { nome: 'Setores', destino: '/setores' },
+  { nome: 'Valores', destino: '/valores' },
 ]
 
 const classeLink = 'text-sm font-medium text-stone-700 transition-colors hover:text-teal-800 focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-700'
@@ -21,9 +21,9 @@ export default function Cabecalho() {
           <NavLink to="/" end className={classeLink}>Início</NavLink>
           <NavLink to="/eventos" className={`${classeLink} font-bold text-teal-800`}>Eventos e resultados</NavLink>
           {linksSecoes.map((link) => (
-            <a key={link.destino} href={link.destino} className={classeLink}>
+            <NavLink key={link.destino} to={link.destino} className={classeLink}>
               {link.nome}
-            </a>
+            </NavLink>
           ))}
         </nav>
 
@@ -35,9 +35,9 @@ export default function Cabecalho() {
             <Link to="/" onClick={(evento) => evento.currentTarget.closest('details')?.removeAttribute('open')} className="rounded-lg px-3 py-2 text-sm font-medium text-stone-700 hover:bg-teal-50">Início</Link>
             <Link to="/eventos" onClick={(evento) => evento.currentTarget.closest('details')?.removeAttribute('open')} className="rounded-lg px-3 py-2 text-sm font-bold text-teal-800 hover:bg-teal-50">Eventos e resultados</Link>
             {linksSecoes.map((link) => (
-              <a key={link.destino} href={link.destino} onClick={(evento) => evento.currentTarget.closest('details')?.removeAttribute('open')} className="rounded-lg px-3 py-2 text-sm font-medium text-stone-700 hover:bg-teal-50 hover:text-teal-800">
+              <Link key={link.destino} to={link.destino} onClick={(evento) => evento.currentTarget.closest('details')?.removeAttribute('open')} className="rounded-lg px-3 py-2 text-sm font-medium text-stone-700 hover:bg-teal-50 hover:text-teal-800">
                 {link.nome}
-              </a>
+              </Link>
             ))}
           </nav>
         </details>

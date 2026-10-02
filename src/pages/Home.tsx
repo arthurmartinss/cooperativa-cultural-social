@@ -1,16 +1,6 @@
-import { departamentos } from '../data/departamentos'
 import { Link } from 'react-router-dom'
-
-const valores = [
-  'Cooperação',
-  'Criatividade',
-  'Respeito',
-  'Inclusão',
-  'Cultura e arte',
-  'Esporte',
-  'Inovação',
-  'Responsabilidade social',
-]
+import ListaDepartamentos from '../components/ListaDepartamentos'
+import { valores } from '../data/valores'
 
 export default function Home() {
   return (
@@ -27,8 +17,8 @@ export default function Home() {
             Cultura, arte, esporte, tecnologia e comunicação se encontram para criar projetos que valorizam talentos e fortalecem a comunidade.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
-            <a href="#sobre" className="rounded-xl bg-teal-800 px-6 py-3 font-semibold text-white transition-colors hover:bg-teal-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-800">Conheça a CCS</a>
-            <a href="#setores" className="rounded-xl border border-teal-800 px-6 py-3 font-semibold text-teal-900 transition-colors hover:bg-white/70 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-800">Explore nossos setores</a>
+            <Link to="/sobre" className="rounded-xl bg-teal-800 px-6 py-3 font-semibold text-white transition-colors hover:bg-teal-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-800">Conheça a CCS</Link>
+            <Link to="/setores" className="rounded-xl border border-teal-800 px-6 py-3 font-semibold text-teal-900 transition-colors hover:bg-white/70 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-800">Explore nossos setores</Link>
           </div>
         </div>
       </section>
@@ -51,19 +41,7 @@ export default function Home() {
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-teal-800">Nossa atuação</p>
           <h2 className="mt-4 max-w-2xl text-3xl font-bold tracking-tight text-stone-950 sm:text-5xl">Áreas que constroem a CCS juntas.</h2>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-stone-700">Cada setor contribui com seus conhecimentos para transformar ideias em projetos.</p>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {departamentos.map((departamento) => (
-              <Link key={departamento.slug} to={`/departamentos/${departamento.slug}`} className="group flex min-h-64 flex-col rounded-2xl border border-stone-200 bg-white p-7 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-teal-500 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-800">
-                <span aria-hidden="true" className="flex h-12 w-12 items-center justify-center rounded-xl bg-teal-100 text-sm font-bold text-teal-900">{departamento.sigla}</span>
-                <h3 className="mt-7 text-xl font-bold text-stone-950">{departamento.nome}</h3>
-                <p className="mt-3 text-sm leading-6 text-stone-600">{departamento.descricao}</p>
-                {departamento.pendente && <span className="mt-auto pt-5 text-xs font-semibold uppercase tracking-wider text-amber-800">Conteúdo em preparação</span>}
-                <span className="mt-auto w-fit pt-6 text-sm font-bold text-teal-800 group-hover:text-teal-950">
-                  Conhecer setor <span aria-hidden="true">→</span>
-                </span>
-              </Link>
-            ))}
-          </div>
+          <div className="mt-12"><ListaDepartamentos /></div>
         </div>
       </section>
 
@@ -85,7 +63,7 @@ export default function Home() {
           <p className="mt-5 max-w-2xl text-base leading-7 text-teal-100 sm:text-lg">Acreditamos que a cultura e a inovação criam oportunidades quando caminham com respeito, inclusão e responsabilidade.</p>
           <ul className="mt-10 flex flex-wrap gap-3" aria-label="Valores da CCS">
             {valores.map((valor) => (
-              <li key={valor} className="rounded-full border border-teal-500/70 px-4 py-2 text-sm font-medium text-white">{valor}</li>
+              <li key={valor.nome} className="rounded-full border border-teal-500/70 px-4 py-2 text-sm font-medium text-white">{valor.nome}</li>
             ))}
           </ul>
         </div>
