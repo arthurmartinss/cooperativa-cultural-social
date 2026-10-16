@@ -56,6 +56,7 @@ export default function Departamento({ departamento }: DepartamentoProps) {
           <Organograma
             nomeDepartamento={departamento.nome}
             integrantes={integrantesPorDepartamento[departamento.slug] ?? []}
+            IconeDepartamento={IconeDepartamento}
           />
         </div>
       </section>
