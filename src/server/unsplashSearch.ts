@@ -72,17 +72,36 @@ export async function handleUnsplashSearch(request: Request, accessKey?: string)
     })
 
     if (!upstream.ok) {
-      const status = upstream.status === 429 || upstream.status === 403 ? 429 : 502
+      const remaining = upstream.headers.get('x-ratelimit-remaining')
+      const upstreamError = await upstream.text()
+      let errorMessage = ''
+      try {
+        const errorBody = JSON.parse(upstreamError) as { errors?: unknown }
+        errorMessage = Array.isArray(errorBody.errors) ? errorBody.errors.join(' ') : ''
+      } catch {
+        // Keep upstream error details out of the client response.
+      }
+      const rateLimited = upstream.status === 429 || (
+        upstream.status === 403 && (
+          remaining === '0' || /rate.?limit|quota|too many requests/i.test(errorMessage)
+        )
+      )
+      const status = rateLimited ? 429 : 502
+      const message = rateLimited
+        ? 'A cota de buscas do Unsplash foi atingida. Aguarde a renovação do limite e tente novamente.'
+        : upstream.status === 403
+          ? 'O Unsplash recusou o acesso à busca. Confira se a aplicação está ativa e se a Access Key configurada pertence a ela.'
+          : upstream.status === 401
+            ? 'A Access Key do Unsplash foi recusada. Confira a chave configurada no ambiente local.'
+            : 'Não foi possível buscar fotografias agora. Tente novamente mais tarde.'
       return json({
-        error: status === 429
-          ? 'O limite de buscas do Unsplash foi atingido. Aguarde um pouco e tente novamente.'
-          : 'Não foi possível buscar fotografias agora. Verifique a chave do Unsplash e tente novamente.',
+        error: message,
       }, status, {
         ...(upstream.headers.get('x-ratelimit-limit')
           ? { 'X-Unsplash-RateLimit-Limit': upstream.headers.get('x-ratelimit-limit')! }
           : {}),
-        ...(upstream.headers.get('x-ratelimit-remaining')
-          ? { 'X-Unsplash-RateLimit-Remaining': upstream.headers.get('x-ratelimit-remaining')! }
+        ...(remaining
+          ? { 'X-Unsplash-RateLimit-Remaining': remaining }
           : {}),
       })
     }

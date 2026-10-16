@@ -18,8 +18,13 @@ type Photo = {
 type Selection = { photo: Photo; section: string }
 type SavedState = { favorites: Photo[]; selections: Selection[] }
 type Category = { label: string; query: string; description: string }
+type SearchResponse = { photos?: Photo[]; total?: number; totalPages?: number; error?: string }
+type CachedSearch = { result: SearchResponse; fetchedAt: number; remaining: number | null }
 
 const STORAGE_KEY = 'ccs-curadoria-unsplash-v1'
+const SEARCH_CACHE_TTL = 10 * 60 * 1000
+const SEARCH_CACHE_STALE_TTL = 24 * 60 * 60 * 1000
+const searchCache = new Map<string, CachedSearch>()
 const categories: Category[] = [
   { label: 'Cultura', query: 'Brazilian cultural festival community audience', description: 'Rodas, celebrações, tradições e encontros culturais.' },
   { label: 'Arte', query: 'Brazilian artist painting community art workshop', description: 'Expressão artística, criação coletiva e processos.' },
@@ -111,6 +116,7 @@ export default function Curadoria() {
   const [photos, setPhotos] = useState<Photo[]>([])
   const [totalPages, setTotalPages] = useState(0)
   const [total, setTotal] = useState(0)
+  const [remainingRequests, setRemainingRequests] = useState<number | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [showFavorites, setShowFavorites] = useState(false)
@@ -139,13 +145,38 @@ export default function Curadoria() {
       const params = new URLSearchParams({ query: activeQuery, page: String(page), per_page: '12' })
       if (orientation) params.set('orientation', orientation)
       if (color) params.set('color', color)
+      const cacheKey = params.toString()
+      const cached = searchCache.get(cacheKey)
+      if (cached && Date.now() - cached.fetchedAt < SEARCH_CACHE_TTL) {
+        setPhotos(cached.result.photos ?? [])
+        setTotal(cached.result.total ?? 0)
+        setTotalPages(cached.result.totalPages ?? 0)
+        setRemainingRequests(cached.remaining)
+        setNotice('Resultados recentes reaproveitados para economizar consultas da API.')
+        setLoading(false)
+        return () => controller.abort()
+      }
       try {
         const response = await fetch(`/api/unsplash/search?${params}`, { signal: controller.signal })
-        const result = await response.json() as { photos?: Photo[]; total?: number; totalPages?: number; error?: string }
-        if (!response.ok) throw new Error(result.error || 'Não foi possível carregar fotografias.')
+        const result = await response.json() as SearchResponse
+        const remainingHeader = response.headers.get('X-Unsplash-RateLimit-Remaining')
+        const remaining = remainingHeader === null ? null : Number(remainingHeader)
+        if (!response.ok) {
+          if (response.status === 429) setRemainingRequests(0)
+          if (response.status === 429 && cached && Date.now() - cached.fetchedAt < SEARCH_CACHE_STALE_TTL) {
+            setPhotos(cached.result.photos ?? [])
+            setTotal(cached.result.total ?? 0)
+            setTotalPages(cached.result.totalPages ?? 0)
+            setNotice('A cota da API foi atingida. Exibindo resultados salvos desta busca para você continuar a curadoria.')
+            return
+          }
+          throw new Error(result.error || 'Não foi possível carregar fotografias.')
+        }
+        searchCache.set(cacheKey, { result, fetchedAt: Date.now(), remaining: Number.isFinite(remaining) ? remaining : null })
         setPhotos(result.photos ?? [])
         setTotal(result.total ?? 0)
         setTotalPages(result.totalPages ?? 0)
+        setRemainingRequests(Number.isFinite(remaining) ? remaining : null)
       } catch (requestError) {
         if (requestError instanceof DOMException && requestError.name === 'AbortError') return
         setPhotos([])
@@ -313,6 +344,7 @@ export default function Curadoria() {
             <label>Cor predominante<select value={color} onChange={(event) => { setColor(event.target.value); setPage(1) }} disabled={showFavorites}>{colorOptions.map((option) => <option value={option.value} key={option.value}>{option.label}</option>)}</select></label>
             <label className="curation-destination">Destino da próxima seleção<select value={targetSection} onChange={(event) => setTargetSection(event.target.value)}>{sections.map((section) => <option key={section}>{section}</option>)}</select></label>
             {!showFavorites && <span className="curation-result-count">{total.toLocaleString('pt-BR')} resultados</span>}
+            {!showFavorites && remainingRequests !== null && <span className="curation-api-quota" aria-live="polite">{remainingRequests} consultas restantes</span>}
           </div>
 
           {notice && <p className="curation-notice" role="status"><FiCheck aria-hidden="true" />{notice}</p>}

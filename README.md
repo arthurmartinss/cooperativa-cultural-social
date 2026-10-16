@@ -19,7 +19,9 @@ As rotas ficam em `src/routes/Routes.tsx`. Os textos dos setores ficam em `src/d
 
 ## Identidade visual
 
-O cabeçalho e o rodapé usam a versão horizontal compacta do logo; as áreas de destaque dos setores usam ícones próprios, e a aba do navegador usa o ícone da marca. Os arquivos da marca ficam em `public/brand`. As cores estão centralizadas em `src/global.css`: azul-marinho `#012869`, azul `#0877FD` e amarelo `#FEC504`. A tipografia é Inter. Assim, futuras mudanças de identidade podem ser feitas sem editar página por página.
+O cabeçalho e o rodapé usam a versão horizontal compacta do logo; as áreas de destaque dos setores mostram fotos selecionadas ou ícones próprios, e a aba do navegador usa o ícone da marca. Os arquivos da marca ficam em `public/brand`. As cores estão centralizadas em `src/global.css`: azul-marinho `#012869`, azul `#0877FD` e amarelo `#FEC504`. A tipografia é Inter. Assim, futuras mudanças de identidade podem ser feitas sem editar página por página.
+
+Tailwind CSS v4 é carregado uma vez em `src/global.css` por `@import "tailwindcss"`; o plugin oficial fica em `vite.config.ts`. Mantenha os imports de pacotes externos antes dos módulos locais e os imports de estilos no fim. `.editorconfig` registra a codificação, quebras de linha e recuo padrão do projeto.
 
 ## Organização dos arquivos
 
@@ -57,6 +59,10 @@ npm run dev
 ```
 
 ### Curadoria de imagens
+
+As fotos de destaque dos departamentos são escolhidas manualmente em `src/data/destaquesDepartamentos.ts`. Esse arquivo aceita tanto uma foto colocada na pasta `src/assets/<setor>/` quanto um link direto para a imagem, acompanhado de texto alternativo, legenda e créditos. Marketing usa um arquivo enviado pela equipe; RH e TI usam imagens hospedadas pelo Unsplash. Para acrescentar outra foto, cadastre-a nesse arquivo com o slug do departamento. As fotos já selecionadas para a página inicial e para as galerias continuam em `src/data/fotografiasSelecionadas.ts`.
+
+As animações de entrada e interação usam Motion for React. O componente reutilizável fica em `src/components/Reveal/Reveal.tsx`; os recursos de animação são carregados em um bloco separado e a preferência do sistema por movimento reduzido é respeitada globalmente.
 
 Para pesquisar fotos reais, crie uma aplicação no [Unsplash Developers](https://unsplash.com/developers), copie `.env.example` para `.env.local` e preencha `UNSPLASH_ACCESS_KEY` com a chave de acesso. Reinicie o servidor local depois de salvar. A chave é lida pelo servidor do Vite e não deve receber o prefixo `VITE_` nem ser compartilhada.
 

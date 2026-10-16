@@ -1,15 +1,16 @@
-import { Link } from "react-router-dom";
-import ListaDepartamentos from "../components/ListaDepartamento/ListaDepartamentos";
-import GaleriaEditorial from "../components/GaleriaEditorial/GaleriaEditorial";
-import { fotoDestaqueHome, fotografiasHome, srcSetResponsivo, urlOtimizada } from "../data/fotografiasSelecionadas";
-import { valores } from "../data/valores";
+import { Link } from 'react-router-dom'
+import GaleriaEditorial from '../components/GaleriaEditorial/GaleriaEditorial'
+import ListaDepartamentos from '../components/ListaDepartamentos/ListaDepartamentos'
+import Reveal from '../components/Reveal/Reveal'
+import { fotoDestaqueHome, fotografiasHome, srcSetResponsivo, urlOtimizada } from '../data/fotografiasSelecionadas'
+import { valores } from '../data/valores'
 
 export default function Home() {
   return (
     <main id="inicio">
       <section className="section-pad overflow-hidden bg-white">
         <div className="site-container grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <div>
+          <Reveal>
             <p className="eyebrow flex items-center gap-3">
               <span
                 aria-hidden="true"
@@ -38,7 +39,8 @@ export default function Home() {
             <p className="mt-10 border-l-4 border-brand-yellow pl-4 text-sm font-medium leading-6 text-brand-muted">
               Cultura e colaboração como instrumentos de transformação social.
             </p>
-          </div>
+          </Reveal>
+          <Reveal delay={0.12}>
           <figure className="relative isolate flex min-h-[340px] overflow-hidden rounded-[28px] bg-brand-navy shadow-[0_30px_70px_rgba(1,40,105,0.16)] sm:min-h-[480px]">
             <img
               src={urlOtimizada(fotoDestaqueHome, 1400)}
@@ -61,11 +63,12 @@ export default function Home() {
               <p className="mt-3 text-[10px] leading-4 text-white/65">Foto: <a className="font-medium text-white/75 underline decoration-white/35 underline-offset-2 transition-colors hover:text-white" href={fotoDestaqueHome.perfilUrl} target="_blank" rel="noreferrer">{fotoDestaqueHome.fotografo}</a> · <a className="font-medium text-white/75 underline decoration-white/35 underline-offset-2 transition-colors hover:text-white" href={fotoDestaqueHome.fotoUrl} target="_blank" rel="noreferrer">Unsplash</a></p>
             </figcaption>
           </figure>
+          </Reveal>
         </div>
       </section>
 
       <section id="sobre" className="section-pad scroll-mt-24 bg-brand-surface">
-        <div className="site-container grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+        <Reveal className="site-container grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
           <div>
             <p className="eyebrow">Quem somos</p>
             <h2 className="mt-4 max-w-lg text-3xl font-extrabold tracking-tight text-brand-ink sm:text-4xl">
@@ -90,7 +93,7 @@ export default function Home() {
               Saiba mais sobre a CCS <span aria-hidden="true">→</span>
             </Link>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <GaleriaEditorial
@@ -103,7 +106,7 @@ export default function Home() {
 
       <section id="setores" className="section-pad scroll-mt-24 bg-white">
         <div className="site-container">
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <Reveal className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="eyebrow">Nossa atuação</p>
               <h2 className="mt-4 max-w-2xl text-3xl font-extrabold tracking-tight text-brand-ink sm:text-4xl">
@@ -120,7 +123,7 @@ export default function Home() {
             >
               Ver todos os setores <span aria-hidden="true">→</span>
             </Link>
-          </div>
+          </Reveal>
           <div className="mt-10">
             <ListaDepartamentos />
           </div>
@@ -128,7 +131,7 @@ export default function Home() {
       </section>
 
       <section className="section-pad bg-brand-surface">
-        <div className="site-container grid gap-8 rounded-[28px] border border-brand-line bg-white p-7 shadow-sm sm:p-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:p-14">
+        <Reveal className="site-container grid gap-8 rounded-[28px] border border-brand-line bg-white p-7 shadow-sm sm:p-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:p-14">
           <div>
             <p className="eyebrow">CCS em movimento</p>
             <h2 className="mt-4 max-w-2xl text-3xl font-extrabold tracking-tight text-brand-ink sm:text-4xl">
@@ -153,11 +156,11 @@ export default function Home() {
               O primeiro passo da presença digital da cooperativa.
             </p>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <section id="valores" className="section-pad scroll-mt-24 bg-white">
-        <div className="site-container rounded-[28px] bg-brand-navy p-8 text-white sm:p-12 lg:p-16">
+        <Reveal className="site-container rounded-[28px] bg-brand-navy p-8 text-white sm:p-12 lg:p-16">
           <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-yellow">
             O que nos guia
           </p>
@@ -184,7 +187,7 @@ export default function Home() {
           >
             Conheça nossos valores <span aria-hidden="true">→</span>
           </Link>
-        </div>
+        </Reveal>
       </section>
     </main>
   );

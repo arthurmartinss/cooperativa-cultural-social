@@ -1,4 +1,4 @@
-import ListaDepartamentos from "../components/ListaDepartamento/ListaDepartamentos";
+import ListaDepartamentos from '../components/ListaDepartamentos/ListaDepartamentos'
 
 export default function Setores() {
   return (

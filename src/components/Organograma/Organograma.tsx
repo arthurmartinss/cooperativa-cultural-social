@@ -1,5 +1,5 @@
-import type { Integrante } from '../../data/integrantes'
 import type { IconType } from 'react-icons'
+import type { Integrante } from '../../data/integrantes'
 import './Organograma.css'
 
 interface OrganogramaProps {

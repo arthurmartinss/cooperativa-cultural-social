@@ -1,6 +1,8 @@
 import { FiExternalLink } from 'react-icons/fi'
+import * as m from 'motion/react-m'
 import type { FotografiaSelecionada } from '../../data/fotografiasSelecionadas'
 import { srcSetResponsivo, urlOtimizada } from '../../data/fotografiasSelecionadas'
+import Reveal from '../Reveal/Reveal'
 import './GaleriaEditorial.css'
 
 interface GaleriaEditorialProps {
@@ -17,16 +19,24 @@ export default function GaleriaEditorial({ eyebrow, title, description, photos, 
   return (
     <section className={`selected-gallery selected-gallery--${layout}`}>
       <div className="site-container">
-        <div className="selected-gallery-heading">
+        <Reveal className="selected-gallery-heading">
           <div>
             <p className="eyebrow">{eyebrow}</p>
             <h2>{title}</h2>
           </div>
           <p>{description}</p>
-        </div>
+        </Reveal>
         <div className="selected-gallery-grid">
           {photos.map((photo, index) => (
-            <figure className={`selected-gallery-item selected-gallery-item--${index + 1}`} key={photo.id}>
+            <m.figure
+              className={`selected-gallery-item selected-gallery-item--${index + 1}`}
+              key={photo.id}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.12 }}
+              transition={{ duration: 0.55, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -3, transition: { duration: 0.18 } }}
+            >
               <div className="selected-gallery-image">
                 <img
                   src={urlOtimizada(photo, 1080)}
@@ -46,7 +56,7 @@ export default function GaleriaEditorial({ eyebrow, title, description, photos, 
                 <span>Foto de <a href={photo.perfilUrl} target="_blank" rel="noreferrer">{photo.fotografo}</a></span>
                 <a href={photo.fotoUrl} target="_blank" rel="noreferrer">Ver no Unsplash <FiExternalLink aria-hidden="true" /></a>
               </figcaption>
-            </figure>
+            </m.figure>
           ))}
         </div>
       </div>
