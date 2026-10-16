@@ -26,4 +26,4 @@ npm install
 npm run dev
 ```
 
-Antes de publicar, execute `npm run lint` e `npm run build`. O arquivo `vercel.json` mantém as rotas funcionando quando alguém abre diretamente o link de uma página.
+Antes de enviar mudanças, execute `npm run lint` e `npm run build`. A Vercel publica automaticamente os commits enviados para `main`. O arquivo `vercel.json` mantém as rotas funcionando quando alguém abre diretamente o link de uma página.
