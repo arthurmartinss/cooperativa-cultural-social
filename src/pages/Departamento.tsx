@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import type { Departamento as DepartamentoTipo } from '../data/departamentos'
+import { integrantesPorDepartamento } from '../data/integrantes'
+import Organograma from '../components/Organograma/Organograma'
 
 interface DepartamentoProps {
   departamento: DepartamentoTipo
@@ -46,9 +48,10 @@ export default function Departamento({ departamento }: DepartamentoProps) {
         <div className="site-container">
           <p className="eyebrow">Nossa equipe</p>
           <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-brand-ink sm:text-4xl">Organograma de {departamento.nome}</h2>
-          <div className="mt-8 rounded-2xl border border-dashed border-brand-line bg-white p-8 text-brand-muted sm:p-10">
-            O organograma deste setor será adicionado aqui quando a equipe enviar os nomes e cargos.
-          </div>
+          <Organograma
+            nomeDepartamento={departamento.nome}
+            integrantes={integrantesPorDepartamento[departamento.slug] ?? []}
+          />
         </div>
       </section>
     </main>
