@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import type { Departamento as DepartamentoTipo } from '../data/departamentos'
 import { integrantesPorDepartamento } from '../data/integrantes'
+import { iconesDepartamentos } from '../data/iconesDepartamentos'
 import Organograma from '../components/Organograma/Organograma'
 
 interface DepartamentoProps {
@@ -8,6 +9,8 @@ interface DepartamentoProps {
 }
 
 export default function Departamento({ departamento }: DepartamentoProps) {
+  const IconeDepartamento = iconesDepartamentos[departamento.slug]
+
   return (
     <main>
       <section className="section-pad bg-brand-surface">
@@ -22,7 +25,9 @@ export default function Departamento({ departamento }: DepartamentoProps) {
           <div className="relative flex min-h-[320px] items-center justify-center overflow-hidden rounded-[28px] bg-brand-navy p-8 sm:min-h-[390px]">
             <span aria-hidden="true" className="absolute -right-6 -top-12 text-[13rem] font-black leading-none text-white/5">{departamento.sigla}</span>
             <div aria-hidden="true" className="absolute -bottom-24 -left-24 h-56 w-56 rounded-full border-[42px] border-brand-blue/30" />
-            <img src="/brand/ccs-simbolo.png" alt="" width="1080" height="1080" className="relative z-10 w-full max-w-[290px]" />
+            <div aria-hidden="true" className="relative z-10 flex h-52 w-52 items-center justify-center rounded-full border border-white/15 bg-white/10 text-brand-yellow shadow-[0_20px_60px_rgba(0,0,0,0.18)] sm:h-64 sm:w-64">
+              {IconeDepartamento && <IconeDepartamento size={112} strokeWidth={1.5} className="drop-shadow-[0_8px_18px_rgba(254,197,4,0.15)] sm:h-32 sm:w-32" />}
+            </div>
             <span className="absolute bottom-6 left-6 z-20 rounded-full bg-brand-yellow px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-brand-navy">{departamento.nome}</span>
           </div>
         </div>

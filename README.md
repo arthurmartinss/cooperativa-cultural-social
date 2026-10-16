@@ -1,6 +1,6 @@
 # CCS — Cooperativa Cultural Social
 
-Site da CCS desenvolvido em React, TypeScript e Vite. A identidade visual usa a marca criada para a cooperativa e mantém espaço para as fotos dos projetos e os organogramas dos setores.
+Site da CCS desenvolvido em React, TypeScript e Vite. A identidade visual usa a marca criada para a cooperativa, com páginas próprias para os setores e seus organogramas.
 
 **Site publicado:** https://cooperativa-cultural-social.vercel.app/
 
@@ -13,20 +13,27 @@ Site da CCS desenvolvido em React, TypeScript e Vite. A identidade visual usa a 
 - `/eventos` — eventos, entregas e resultados.
 - `/departamentos/marketing`, `/departamentos/recursos-humanos`, `/departamentos/tecnologia-da-informacao`, `/departamentos/esporte`, `/departamentos/artes` e `/departamentos/turismo` — páginas de cada setor.
 
-As rotas ficam em `src/routes/Routes.tsx`. Os textos dos setores ficam em `src/data/departamentos.ts` e usam o layout de `src/pages/Departamento.tsx`. Os cartões são compartilhados entre a página inicial e `/setores` pelo componente `src/components/ListaDepartamentos.tsx`. Cada página de departamento reserva espaço para o organograma do próprio setor. Eventos e entregas confirmados poderão ser adicionados em `src/data/atualizacoes.ts`.
+As rotas ficam em `src/routes/Routes.tsx`. Os textos dos setores ficam em `src/data/departamentos.ts` e usam o layout de `src/pages/Departamento.tsx`. Os ícones dos departamentos estão centralizados em `src/data/iconesDepartamentos.ts` e são reutilizados nas páginas e nos cartões de setores. Os organogramas são montados pelo componente `src/components/Organograma/Organograma.tsx`, com nomes e cargos em `src/data/integrantes.ts`. Eventos e entregas confirmados poderão ser adicionados em `src/data/atualizacoes.ts`.
 
 ## Identidade visual
 
-O cabeçalho e o rodapé usam a versão horizontal compacta do logo; as áreas de destaque usam o símbolo e a aba do navegador usa o ícone da marca. Esses arquivos ficam em `public/brand`. As cores estão centralizadas em `src/global.css`: azul-marinho `#012869`, azul `#0877FD` e amarelo `#FEC504`. A tipografia é Inter. Assim, futuras mudanças de identidade podem ser feitas sem editar página por página.
+O cabeçalho e o rodapé usam a versão horizontal compacta do logo; as áreas de destaque dos setores usam ícones próprios, e a aba do navegador usa o ícone da marca. Os arquivos da marca ficam em `public/brand`. As cores estão centralizadas em `src/global.css`: azul-marinho `#012869`, azul `#0877FD` e amarelo `#FEC504`. A tipografia é Inter. Assim, futuras mudanças de identidade podem ser feitas sem editar página por página.
 
 ## Organização dos arquivos
 
 ```text
 my-app/
-├── public/brand/       Logos e ícones escolhidos para o site
+├── public/brand/       Logos e ícones da CCS
 ├── src/
-│   ├── components/     Partes reutilizadas, como cabeçalho, rodapé e cartões
-│   ├── data/           Textos e informações de setores, valores e eventos
+│   ├── assets/         Fotos separadas em pastas por departamento
+│   │   ├── artes/
+│   │   ├── esporte/
+│   │   ├── marketing/
+│   │   ├── recursos-humanos/
+│   │   ├── tecnologia/
+│   │   └── turismo/
+│   ├── components/     Partes reutilizadas, como cabeçalho, rodapé e organograma
+│   ├── data/           Textos, equipes, ícones e informações de setores e eventos
 │   ├── pages/          Conteúdo de cada página
 │   ├── routes/         Caminhos de navegação do site
 │   └── global.css      Fonte, cores e estilos compartilhados
