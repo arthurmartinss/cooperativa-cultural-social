@@ -13,7 +13,7 @@ export default function ListaDepartamentos() {
           <Reveal key={departamento.slug} className="h-full" delay={index * 0.055} interactive>
             <Link
               to={`/departamentos/${departamento.slug}`}
-              className="group flex h-full min-h-64 flex-col rounded-2xl border border-brand-line bg-white p-7 shadow-sm transition duration-200 hover:border-brand-blue hover:shadow-[0_18px_40px_rgba(1,40,105,0.1)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-blue"
+              className="group flex h-full min-h-64 flex-col rounded-2xl border border-brand-line bg-brand-paper p-7 shadow-sm transition duration-200 hover:border-brand-blue hover:shadow-[0_18px_40px_rgba(1,40,105,0.1)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-blue"
             >
               <span
                 aria-hidden="true"

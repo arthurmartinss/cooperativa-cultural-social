@@ -1,5 +1,6 @@
 import { FiExternalLink } from 'react-icons/fi'
 import * as m from 'motion/react-m'
+import { Link } from 'react-router-dom'
 import type { FotografiaSelecionada } from '../../data/fotografiasSelecionadas'
 import { srcSetResponsivo, urlOtimizada } from '../../data/fotografiasSelecionadas'
 import Reveal from '../Reveal/Reveal'
@@ -10,10 +11,11 @@ interface GaleriaEditorialProps {
   title: string
   description: string
   photos: FotografiaSelecionada[]
-  layout: 'mosaic' | 'pair' | 'triptych'
+  layout: 'grid' | 'pair' | 'triptych'
+  action?: { label: string; to: string }
 }
 
-export default function GaleriaEditorial({ eyebrow, title, description, photos, layout }: GaleriaEditorialProps) {
+export default function GaleriaEditorial({ eyebrow, title, description, photos, layout, action }: GaleriaEditorialProps) {
   if (photos.length === 0) return null
 
   return (
@@ -24,7 +26,10 @@ export default function GaleriaEditorial({ eyebrow, title, description, photos, 
             <p className="eyebrow">{eyebrow}</p>
             <h2>{title}</h2>
           </div>
-          <p>{description}</p>
+          <div className="selected-gallery-intro">
+            <p>{description}</p>
+            {action && <Link to={action.to} className="selected-gallery-action">{action.label} <span aria-hidden="true">↗</span></Link>}
+          </div>
         </Reveal>
         <div className="selected-gallery-grid">
           {photos.map((photo, index) => (
@@ -41,9 +46,9 @@ export default function GaleriaEditorial({ eyebrow, title, description, photos, 
                 <img
                   src={urlOtimizada(photo, 1080)}
                   srcSet={srcSetResponsivo(photo)}
-                  sizes={layout === 'mosaic'
-                    ? '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 66vw'
-                    : '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'}
+                  sizes={layout === 'grid' || layout === 'pair'
+                      ? '(max-width: 640px) 100vw, 50vw'
+                      : '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'}
                   width={photo.largura}
                   height={photo.altura}
                   alt={photo.alt}

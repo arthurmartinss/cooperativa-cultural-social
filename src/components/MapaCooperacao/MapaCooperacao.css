@@ -1,0 +1,200 @@
+.cooperation-section { background: var(--color-brand-page); }
+
+.cooperation-heading {
+  max-width: 47rem;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.cooperation-heading h2 {
+  max-width: 43rem;
+  margin-top: 1rem;
+  color: var(--color-brand-ink);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 650;
+  line-height: 1.12;
+  letter-spacing: -0.045em;
+}
+
+.cooperation-heading > p:last-child {
+  max-width: 39rem;
+  margin-top: 1.25rem;
+  color: var(--color-brand-muted);
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  line-height: 1.8;
+}
+
+.cooperation-layout {
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 2rem);
+  align-items: stretch;
+}
+
+.cooperation-network {
+  min-width: 0;
+}
+
+.cooperation-nodes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.8rem, 1.6vw, 1.25rem);
+}
+
+.cooperation-node {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  min-width: 0;
+  min-height: 7rem;
+  align-items: center;
+  border: 1px solid var(--color-brand-line);
+  border-radius: 1.15rem;
+  background: var(--color-brand-paper);
+  padding: 1.15rem 1.25rem;
+  color: var(--color-brand-ink);
+  text-align: left;
+  cursor: pointer;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.cooperation-node:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-brand-action);
+  box-shadow: 0 12px 28px rgb(18 58 112 / 0.08);
+}
+
+.cooperation-node--active {
+  border-color: var(--color-brand-action);
+  color: var(--color-brand-ink);
+}
+
+.cooperation-node:focus-visible {
+  outline: 3px solid var(--color-brand-blue);
+  outline-offset: 4px;
+}
+
+.cooperation-node-highlight {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--color-brand-sky);
+}
+
+.cooperation-node-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.cooperation-node-content svg {
+  flex: 0 0 auto;
+  color: var(--color-brand-action);
+}
+
+.cooperation-detail {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  border: 1px solid var(--color-brand-line);
+  border-radius: 1.5rem;
+  background: var(--color-brand-paper);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  box-shadow: 0 12px 32px rgb(18 58 112 / 0.045);
+}
+
+.cooperation-detail:focus-visible {
+  outline: 3px solid var(--color-brand-blue);
+  outline-offset: 4px;
+}
+
+.cooperation-counter {
+  margin-left: auto;
+  color: var(--color-brand-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.cooperation-detail-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 1.5rem;
+}
+
+.cooperation-detail-icon {
+  display: flex;
+  width: 3.5rem;
+  height: 3.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  background: var(--color-brand-sky);
+  color: var(--color-brand-action);
+}
+
+.cooperation-detail .eyebrow { margin-top: 1.75rem; }
+
+.cooperation-detail h3 {
+  margin-top: 0.6rem;
+  color: var(--color-brand-ink);
+  font-size: clamp(1.7rem, 3vw, 2.25rem);
+  font-weight: 650;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+}
+
+.cooperation-description {
+  margin-top: 1rem;
+  color: var(--color-brand-muted);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.cooperation-link {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 1.5rem;
+  color: var(--color-brand-navy);
+  font-size: 0.95rem;
+  font-weight: 800;
+  transition: gap 180ms ease, color 180ms ease;
+}
+
+.cooperation-link:hover {
+  gap: 0.85rem;
+  color: var(--color-brand-action);
+}
+
+@media (min-width: 900px) {
+  .cooperation-layout {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  }
+
+  .cooperation-detail { grid-column: 1; grid-row: 1; }
+  .cooperation-network { grid-column: 2; grid-row: 1; align-self: center; }
+}
+
+@media (min-width: 1200px) {
+  .cooperation-nodes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cooperation-node { min-height: 8rem; padding: 1rem; }
+  .cooperation-node-content { align-items: flex-start; flex-direction: column; gap: 0.7rem; }
+}
+
+@media (max-width: 520px) {
+  .cooperation-nodes { grid-template-columns: 1fr; }
+  .cooperation-node { min-height: 5.25rem; padding: 0.9rem 1rem; }
+  .cooperation-detail { min-height: 22rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cooperation-node, .cooperation-link { transition: none; }
+}

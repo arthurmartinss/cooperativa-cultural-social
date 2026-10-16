@@ -26,12 +26,12 @@ const SEARCH_CACHE_TTL = 10 * 60 * 1000
 const SEARCH_CACHE_STALE_TTL = 24 * 60 * 60 * 1000
 const searchCache = new Map<string, CachedSearch>()
 const categories: Category[] = [
-  { label: 'Cultura', query: 'Brazilian cultural festival community audience', description: 'Rodas, celebrações, tradições e encontros culturais.' },
-  { label: 'Arte', query: 'Brazilian artist painting community art workshop', description: 'Expressão artística, criação coletiva e processos.' },
-  { label: 'Esporte', query: 'community sports project youth Brazil', description: 'Movimento, jogo e participação em grupo.' },
-  { label: 'Tecnologia', query: 'young people digital technology workshop', description: 'Pessoas aprendendo, criando e compartilhando tecnologia.' },
-  { label: 'Comunicação', query: 'community media production photography interview', description: 'Gente contando histórias e construindo narrativas.' },
-  { label: 'Projetos sociais', query: 'community collaboration social project diverse people', description: 'Colaboração real, inclusão e vida em comunidade.' },
+  { label: 'Cultura', query: 'Brazilian cultural festival community audience', description: 'Rodas, celebrações, tradições e encontros culturais' },
+  { label: 'Arte', query: 'Brazilian artist painting community art workshop', description: 'Expressão artística, criação coletiva e processos' },
+  { label: 'Esporte', query: 'community sports project youth Brazil', description: 'Movimento, jogo e participação em grupo' },
+  { label: 'Tecnologia', query: 'young people digital technology workshop', description: 'Pessoas aprendendo, criando e compartilhando tecnologia' },
+  { label: 'Comunicação', query: 'community media production photography interview', description: 'Gente contando histórias e construindo narrativas' },
+  { label: 'Projetos sociais', query: 'community collaboration social project diverse people', description: 'Colaboração real, inclusão e vida em comunidade' },
 ]
 
 const sections = [
@@ -293,12 +293,12 @@ export default function Curadoria() {
           <p className="curation-eyebrow"><span /> Laboratório de imagem CCS</p>
           <div className="curation-title-row">
             <div>
-              <h1>Uma imagem também<br /><em>conta quem somos.</em></h1>
+              <h1>Uma imagem também<br /><em>conta quem somos</em></h1>
               <p className="curation-lede">Vamos encontrar fotografias com presença, afeto e vida real para contar as histórias da cooperativa. Primeiro escolhemos juntos; depois pensamos onde cada imagem funciona melhor.</p>
             </div>
             <aside className="curation-note">
               <span className="curation-note-number">01 / 05</span>
-              <p>Curadoria antes da vitrine.</p>
+              <p>Curadoria antes da vitrine</p>
               <span>Nenhuma foto daqui altera o site público.</span>
             </aside>
           </div>
@@ -352,7 +352,7 @@ export default function Curadoria() {
           {error && <div className="curation-error" role="alert"><strong>Não conseguimos carregar a busca.</strong><p>{error}</p>{error.includes('chave') && <p>Adicione sua chave em <code>my-app/.env.local</code> usando <code>UNSPLASH_ACCESS_KEY=...</code>, reinicie o servidor local e tente novamente. Não envie essa chave pelo chat nem use o prefixo VITE_.</p>}</div>}
 
           {!error && loading && <div className="curation-loading" aria-live="polite"><span className="curation-loader" />Buscando imagens reais no Unsplash…</div>}
-          {!error && !loading && visiblePhotos.length === 0 && <div className="curation-empty"><span aria-hidden="true">✳</span><h3>{showFavorites ? 'Suas favoritas vão aparecer aqui.' : 'Ainda não encontramos imagens para esta busca.'}</h3><p>{showFavorites ? 'Toque no coração de uma foto que você queira guardar.' : 'Tente outro termo ou altere os filtros de formato e cor.'}</p></div>}
+          {!error && !loading && visiblePhotos.length === 0 && <div className="curation-empty"><span aria-hidden="true">✳</span><h3>{showFavorites ? 'Suas favoritas vão aparecer aqui' : 'Ainda não encontramos imagens para esta busca'}</h3><p>{showFavorites ? 'Toque no coração de uma foto que você queira guardar.' : 'Tente outro termo ou altere os filtros de formato e cor.'}</p></div>}
 
           {!loading && visiblePhotos.length > 0 && (
             <div className="curation-photo-grid">

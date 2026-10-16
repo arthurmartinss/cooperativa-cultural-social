@@ -9,10 +9,10 @@ export default function Gestores() {
         <div className="site-container">
           <p className="eyebrow">Gestão da cooperativa</p>
           <h1 className="mt-4 max-w-3xl text-[clamp(2.25rem,4.5vw,3.5rem)] font-extrabold leading-[1.1] tracking-tight text-brand-ink">
-            Gestores da CCS
+            Quem cuida da gestão da CCS
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-8 text-brand-muted sm:text-lg">
-            Conheça as pessoas identificadas como gestoras da cooperativa.
+            Conheça as pessoas que compõem a gestão da cooperativa.
           </p>
 
           <Organograma

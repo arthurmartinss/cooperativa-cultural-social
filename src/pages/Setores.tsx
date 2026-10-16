@@ -9,12 +9,10 @@ export default function Setores() {
             Nossa atuação
           </p>
           <h1 className="mt-5 max-w-4xl text-4xl font-bold tracking-tight text-brand-ink sm:text-6xl">
-            Departamentos que trabalham juntos.
+            Departamentos que trabalham juntos
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-brand-muted">
-            Conheça o objetivo de cada setor da CCS. Ao entrar em um
-            departamento, você encontra também o espaço para o organograma da
-            equipe.
+            Veja o que cada equipe faz e conheça as pessoas por trás de cada área.
           </p>
         </div>
       </section>

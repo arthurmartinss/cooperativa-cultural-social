@@ -13,7 +13,7 @@ export interface FotografiaSelecionada {
 export const fotoDestaqueHome: FotografiaSelecionada = {
   id: 'dwYwgKC5KgU',
   alt: 'Grupo diverso de quatro pessoas colaborando em um projeto de design.',
-  legenda: 'Ideias que crescem quando trabalhamos em conjunto.',
+  legenda: 'Ideias que crescem quando trabalhamos em conjunto',
   largura: 3840,
   altura: 2160,
   rawUrl: 'https://images.unsplash.com/photo-1787647561667-7f3b6b34487c?ixid=M3wxMTAzOTQ1fDB8MXxzZWFyY2h8MzV8fGNvbW11bml0eSUyMGNvbGxhYm9yYXRpb24lMjBzb2NpYWwlMjBwcm9qZWN0JTIwZGl2ZXJzZSUyMHBlb3BsZXxlbnwxfDB8fHwxNzkyMTU5OTE1fDA&ixlib=rb-4.1.0',
@@ -26,7 +26,7 @@ export const fotografiasHome: FotografiaSelecionada[] = [
   {
     id: 'OerQvrNvozU',
     alt: 'Edifício amplo ao lado de um espelho d’água.',
-    legenda: 'Espaços que recebem novas experiências culturais.',
+    legenda: 'Espaços que recebem novas experiências culturais',
     largura: 5970,
     altura: 3980,
     rawUrl: 'https://images.unsplash.com/photo-1714577788648-8a43dd64b6a7?ixid=M3wxMTAzOTQ1fDB8MXxzZWFyY2h8Mnx8YXJ0ZXN8ZW58MXwwfHx8MTc5MjE2MDMxMnww&ixlib=rb-4.1.0',
@@ -37,7 +37,7 @@ export const fotografiasHome: FotografiaSelecionada[] = [
   {
     id: 'lTZc-Qr3K3g',
     alt: 'Pessoas reunidas ao redor de uma mesa com computadores portáteis.',
-    legenda: 'Aprender e criar com tecnologia.',
+    legenda: 'Aprender e criar com tecnologia',
     largura: 4200,
     altura: 2800,
     rawUrl: 'https://images.unsplash.com/photo-1639485528025-a8491009eb00?ixid=M3wxMTAzOTQ1fDB8MXxzZWFyY2h8NzB8fHlvdW5nJTIwcGVvcGxlJTIwZGlnaXRhbCUyMHRlY2hub2xvZ3klMjB3b3Jrc2hvcHxlbnwxfDB8fHwxNzkyMTYwMDA2fDA&ixlib=rb-4.1.0',
@@ -48,13 +48,24 @@ export const fotografiasHome: FotografiaSelecionada[] = [
   {
     id: 'pUtS-rsZz0o',
     alt: 'Pessoas reunidas em cadeiras, conversando em um espaço coletivo.',
-    legenda: 'Encontros para compartilhar ideias.',
+    legenda: 'Encontros para compartilhar ideias',
     largura: 6136,
     altura: 3508,
     rawUrl: 'https://images.unsplash.com/photo-1582880159736-8bb57334d2f5?ixid=M3wxMTAzOTQ1fDB8MXxzZWFyY2h8NTJ8fHlvdW5nJTIwcGVvcGxlJTIwZGlnaXRhbCUyMHRlY2hub2xvZ3klMjB3b3Jrc2hvcHxlbnwxfDB8fHwxNzkyMTU5OTg4fDA&ixlib=rb-4.1.0',
     fotoUrl: 'https://unsplash.com/photos/people-standing-and-sitting-on-chairs-pUtS-rsZz0o?utm_source=cooperativa_cultural_social&utm_medium=referral',
     fotografo: 'Sandro Gonzalez',
     perfilUrl: 'https://unsplash.com/@sandro?utm_source=cooperativa_cultural_social&utm_medium=referral',
+  },
+  {
+    id: 'vtCgZwSjjPU',
+    alt: 'Artistas fantasiados dançando entre o público em uma festa cultural em Caruaru.',
+    legenda: 'Cultura viva, feita no encontro entre pessoas',
+    largura: 5184,
+    altura: 3456,
+    rawUrl: 'https://images.unsplash.com/photo-1779037806291-799e4d197e23',
+    fotoUrl: 'https://unsplash.com/photos/people-in-costumes-at-a-festival-vtCgZwSjjPU?utm_source=cooperativa_cultural_social&utm_medium=referral',
+    fotografo: 'Karla Vidal',
+    perfilUrl: 'https://unsplash.com/@karlavidal?utm_source=cooperativa_cultural_social&utm_medium=referral',
   },
 ]
 
@@ -63,7 +74,7 @@ export const fotografiasPorDepartamento: Record<string, FotografiaSelecionada[]>
     {
       id: 'zZPeoLxLRyM',
       alt: 'Pintura abstrata com formas em azul, amarelo e vermelho.',
-      legenda: 'Cores que dão forma às ideias.',
+      legenda: 'Cores que dão forma às ideias',
       largura: 4032,
       altura: 3024,
       rawUrl: 'https://images.unsplash.com/photo-1615184697985-c9bde1b07da7?ixid=M3wxMTAzOTQ1fDB8MXxzZWFyY2h8M3x8YXJ0ZSUyMG1vZGVybmF8ZW58MXwwfHx8MTc5MjE2MDM3MXww&ixlib=rb-4.1.0',
@@ -74,7 +85,7 @@ export const fotografiasPorDepartamento: Record<string, FotografiaSelecionada[]>
     {
       id: 'k39RGHmLoV8',
       alt: 'Duas mãos trabalhando em uma pintura.',
-      legenda: 'A criação também acontece no fazer.',
+      legenda: 'A criação também acontece no fazer',
       largura: 7952,
       altura: 5304,
       rawUrl: 'https://images.unsplash.com/photo-1558522195-e1201b090344?ixid=M3wxMTAzOTQ1fDB8MXxzZWFyY2h8MXx8YXJ0ZSUyMG1vZGVybmF8ZW58MXwwfHx8MTc5MjE2MDM3MXww&ixlib=rb-4.1.0',
@@ -87,7 +98,7 @@ export const fotografiasPorDepartamento: Record<string, FotografiaSelecionada[]>
     {
       id: 'NA_4nqk9MYQ',
       alt: 'Dois esgrimistas de uniforme branco disputando um combate.',
-      legenda: 'Precisão, estratégia e movimento.',
+      legenda: 'Precisão, estratégia e movimento',
       largura: 2872,
       altura: 1917,
       rawUrl: 'https://images.unsplash.com/photo-1779831910063-27c21c9fabb5?ixid=M3wxMTAzOTQ1fDB8MXxzZWFyY2h8NDJ8fGNvbXBldGklQzMlQTclQzMlQTNvfGVufDF8MHx8fDE3OTIxNjAyOTR8MA&ixlib=rb-4.1.0',
@@ -98,7 +109,7 @@ export const fotografiasPorDepartamento: Record<string, FotografiaSelecionada[]>
     {
       id: 'no698V0uP5M',
       alt: 'Ciclistas em movimento durante uma prova de ciclismo.',
-      legenda: 'O esporte também conta histórias.',
+      legenda: 'O esporte também conta histórias',
       largura: 4032,
       altura: 3024,
       rawUrl: 'https://images.unsplash.com/photo-1535405254491-77846fe15863?ixid=M3wxMTAzOTQ1fDB8MXxzZWFyY2h8MzZ8fGNvbXBldGklQzMlQTclQzMlQTNvfGVufDF8MHx8fDE3OTIxNjAyNzh8MA&ixlib=rb-4.1.0',
@@ -109,7 +120,7 @@ export const fotografiasPorDepartamento: Record<string, FotografiaSelecionada[]>
     {
       id: 'CCXLjSSK1gE',
       alt: 'Grupo de pessoas participando de uma atividade em uma pista.',
-      legenda: 'Cada encontro abre espaço para participar.',
+      legenda: 'Cada encontro abre espaço para participar',
       largura: 5887,
       altura: 3925,
       rawUrl: 'https://images.unsplash.com/photo-1663246544917-9fa8f65b8359?ixid=M3wxMTAzOTQ1fDB8MXxzZWFyY2h8MjF8fGF0aXZpZGFkZXxlbnwxfDB8fHwxNzkyMTYwMDgyfDA&ixlib=rb-4.1.0',

@@ -1,194 +1,85 @@
+import { useRef } from 'react'
+import { useReducedMotion, useScroll, useTransform } from 'motion/react'
+import * as m from 'motion/react-m'
 import { Link } from 'react-router-dom'
 import GaleriaEditorial from '../components/GaleriaEditorial/GaleriaEditorial'
-import ListaDepartamentos from '../components/ListaDepartamentos/ListaDepartamentos'
+import MapaCooperacao from '../components/MapaCooperacao/MapaCooperacao'
 import Reveal from '../components/Reveal/Reveal'
 import { fotoDestaqueHome, fotografiasHome, srcSetResponsivo, urlOtimizada } from '../data/fotografiasSelecionadas'
 import { valores } from '../data/valores'
+import './Home.css'
 
 export default function Home() {
+  const heroRef = useRef<HTMLElement>(null)
+  const reducedMotion = useReducedMotion()
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
+  const colorWashOpacity = useTransform(scrollYProgress, [0, 0.35, 0.85, 1], [0, 0, 0.78, 1])
+
   return (
     <main id="inicio">
-      <section className="section-pad overflow-hidden bg-white">
-        <div className="site-container grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <Reveal>
-            <p className="eyebrow flex items-center gap-3">
-              <span
-                aria-hidden="true"
-                className="h-2.5 w-2.5 rounded-full bg-brand-yellow"
-              />{" "}
-              Cooperativa Cultural Social
-            </p>
-            <h1 className="mt-6 max-w-2xl text-[clamp(2.25rem,4.5vw,3.5rem)] font-extrabold leading-[1.08] tracking-tight text-brand-ink">
-              Conectamos pessoas.{" "}
-              <span className="text-brand-navy">
-                Transformamos ideias em oportunidades.
-              </span>
-            </h1>
-            <p className="mt-7 max-w-xl text-base leading-8 text-brand-muted sm:text-lg">
-              Cultura, arte, esporte, tecnologia e comunicação se encontram para
-              criar projetos que valorizam talentos e fortalecem a comunidade.
-            </p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <Link to="/sobre" className="button-primary">
-                Conheça a CCS <span aria-hidden="true">↗</span>
-              </Link>
-              <Link to="/setores" className="button-secondary">
-                Explore nossos setores
-              </Link>
+      <section ref={heroRef} className="home-hero section-pad" aria-labelledby="home-title">
+        <m.div className="home-hero-wash" style={{ opacity: reducedMotion ? 0 : colorWashOpacity }} aria-hidden="true" />
+        <div className="site-container home-hero-grid">
+          <Reveal className="home-hero-copy">
+            <p className="eyebrow home-hero-eyebrow">Cooperativa Cultural Social</p>
+            <h1 id="home-title">Cultura se faz <span>junto</span></h1>
+            <p className="home-hero-intro">Gente de áreas diferentes se encontra aqui para criar projetos culturais e sociais, compartilhar conhecimento e abrir espaço para novos talentos.</p>
+            <div className="home-hero-actions">
+              <Link to="/setores" className="home-hero-primary">Conheça os setores <span aria-hidden="true">↗</span></Link>
+              <Link to="/sobre" className="home-hero-secondary">Sobre a CCS <span aria-hidden="true">→</span></Link>
             </div>
-            <p className="mt-10 border-l-4 border-brand-yellow pl-4 text-sm font-medium leading-6 text-brand-muted">
-              Cultura e colaboração como instrumentos de transformação social.
-            </p>
           </Reveal>
           <Reveal delay={0.12}>
-          <figure className="relative isolate flex min-h-[340px] overflow-hidden rounded-[28px] bg-brand-navy shadow-[0_30px_70px_rgba(1,40,105,0.16)] sm:min-h-[480px]">
-            <img
-              src={urlOtimizada(fotoDestaqueHome, 1400)}
-              srcSet={srcSetResponsivo(fotoDestaqueHome)}
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              width={fotoDestaqueHome.largura}
-              height={fotoDestaqueHome.altura}
-              alt={fotoDestaqueHome.alt}
-              loading="eager"
-              decoding="async"
-              fetchPriority="high"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-            <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-brand-navy/15 to-brand-navy/5" />
-            <span className="absolute left-6 top-6 z-10 rounded-full border border-white/30 bg-brand-navy/50 px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-white backdrop-blur sm:left-8 sm:top-8">
-              CCS em colaboração
-            </span>
-            <figcaption className="relative z-10 mt-auto w-full p-6 text-white sm:p-8">
-              <p className="max-w-lg text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl">{fotoDestaqueHome.legenda}</p>
-              <p className="mt-3 text-[10px] leading-4 text-white/65">Foto: <a className="font-medium text-white/75 underline decoration-white/35 underline-offset-2 transition-colors hover:text-white" href={fotoDestaqueHome.perfilUrl} target="_blank" rel="noreferrer">{fotoDestaqueHome.fotografo}</a> · <a className="font-medium text-white/75 underline decoration-white/35 underline-offset-2 transition-colors hover:text-white" href={fotoDestaqueHome.fotoUrl} target="_blank" rel="noreferrer">Unsplash</a></p>
-            </figcaption>
-          </figure>
+            <figure className="home-hero-figure">
+              <img src={urlOtimizada(fotoDestaqueHome, 1400)} srcSet={srcSetResponsivo(fotoDestaqueHome)} sizes="(max-width: 1024px) 100vw, 50vw" width={fotoDestaqueHome.largura} height={fotoDestaqueHome.altura} alt={fotoDestaqueHome.alt} loading="eager" decoding="async" fetchPriority="high" />
+              <figcaption>
+                <strong>{fotoDestaqueHome.legenda}</strong>
+                <small>Foto: <a href={fotoDestaqueHome.perfilUrl} target="_blank" rel="noreferrer">{fotoDestaqueHome.fotografo}</a> · <a href={fotoDestaqueHome.fotoUrl} target="_blank" rel="noreferrer">Unsplash</a></small>
+              </figcaption>
+            </figure>
           </Reveal>
         </div>
       </section>
 
-      <section id="sobre" className="section-pad scroll-mt-24 bg-brand-surface">
-        <Reveal className="site-container grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-          <div>
-            <p className="eyebrow">Quem somos</p>
-            <h2 className="mt-4 max-w-lg text-3xl font-extrabold tracking-tight text-brand-ink sm:text-4xl">
-              Diferentes talentos, um propósito coletivo.
-            </h2>
-          </div>
-          <div className="space-y-5 text-base leading-8 text-brand-muted sm:text-lg">
-            <p>
-              A CCS é uma cooperativa criada para promover integração,
-              criatividade, inclusão e desenvolvimento social por meio do
-              trabalho colaborativo.
-            </p>
-            <p>
-              Reunimos diferentes áreas e profissionais para desenvolver
-              projetos, ações e iniciativas que aproximam as pessoas e abrem
-              espaço para aprender, participar e criar.
-            </p>
-            <Link
-              to="/sobre"
-              className="inline-flex items-center gap-2 font-bold text-brand-navy hover:text-brand-action"
-            >
-              Saiba mais sobre a CCS <span aria-hidden="true">→</span>
-            </Link>
+      <section id="sobre" className="home-about section-pad scroll-mt-20">
+        <Reveal className="site-container home-about-grid">
+          <div><p className="eyebrow">CCS</p><h2>Um lugar para fazer ideias acontecerem</h2></div>
+          <div className="home-about-text">
+            <p>Somos uma cooperativa que reúne cultura, arte, esporte, tecnologia e comunicação. Cada área traz seu olhar; juntas, elas criam oportunidades para a comunidade.</p>
+            <Link to="/sobre" className="home-text-link">Saiba mais <span aria-hidden="true">→</span></Link>
           </div>
         </Reveal>
       </section>
 
-      <GaleriaEditorial
-        eyebrow="Ideias em movimento"
-        title="Cultura, pessoas e tecnologia em um mesmo espaço."
-        description="Imagens que representam os encontros, os espaços e a criação compartilhada que inspiram o trabalho da CCS."
-        photos={fotografiasHome}
-        layout="mosaic"
-      />
+      <div id="setores" className="scroll-mt-20"><MapaCooperacao /></div>
 
-      <section id="setores" className="section-pad scroll-mt-24 bg-white">
-        <div className="site-container">
-          <Reveal className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="eyebrow">Nossa atuação</p>
-              <h2 className="mt-4 max-w-2xl text-3xl font-extrabold tracking-tight text-brand-ink sm:text-4xl">
-                Áreas que constroem a CCS juntas.
-              </h2>
-              <p className="mt-4 max-w-2xl text-base leading-8 text-brand-muted sm:text-lg">
-                Cada setor contribui com seus conhecimentos para transformar
-                ideias em projetos.
-              </p>
-            </div>
-            <Link
-              to="/setores"
-              className="w-fit shrink-0 font-bold text-brand-navy hover:text-brand-action"
-            >
-              Ver todos os setores <span aria-hidden="true">→</span>
-            </Link>
-          </Reveal>
-          <div className="mt-10">
-            <ListaDepartamentos />
-          </div>
-        </div>
-      </section>
+      <GaleriaEditorial eyebrow="Nossa inspiração" title="Pessoas, lugares e ideias em movimento" description="Estas imagens ajudam a imaginar os encontros, a expressão e o trabalho em conjunto que queremos construir na CCS." photos={fotografiasHome} layout="grid" action={{ label: 'Explorar curadoria', to: '/curadoria' }} />
 
-      <section className="section-pad bg-brand-surface">
-        <Reveal className="site-container grid gap-8 rounded-[28px] border border-brand-line bg-white p-7 shadow-sm sm:p-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:p-14">
+      <section className="home-updates section-pad">
+        <Reveal className="site-container home-updates-grid">
           <div>
-            <p className="eyebrow">CCS em movimento</p>
-            <h2 className="mt-4 max-w-2xl text-3xl font-extrabold tracking-tight text-brand-ink sm:text-4xl">
-              Acompanhe nossos eventos e resultados.
-            </h2>
-            <p className="mt-4 max-w-2xl text-base leading-8 text-brand-muted">
-              Um espaço para reunir as atividades, os projetos em andamento e as
-              entregas da cooperativa.
-            </p>
-            <Link to="/eventos" className="button-primary mt-7">
-              Ver eventos e resultados <span aria-hidden="true">↗</span>
-            </Link>
+            <p className="eyebrow">Projetos e encontros</p>
+            <h2>O que está acontecendo na CCS</h2>
+            <p>Estamos construindo nossa presença digital com a participação dos setores. Aqui também vamos reunir os próximos eventos e os resultados do nosso trabalho.</p>
+            <Link to="/eventos" className="button-primary">Acompanhar novidades <span aria-hidden="true">↗</span></Link>
           </div>
-          <div className="rounded-2xl bg-brand-sky p-6 sm:p-8">
-            <span className="inline-block rounded-full bg-brand-yellow px-3 py-1 text-xs font-extrabold uppercase tracking-wider text-brand-navy">
-              Tema do mês · TI
-            </span>
-            <p className="mt-5 text-xl font-bold leading-snug text-brand-navy sm:text-2xl">
-              Conectando ideias: o início da CCS no mundo digital
-            </p>
-            <p className="mt-3 text-sm leading-6 text-brand-muted">
-              O primeiro passo da presença digital da cooperativa.
-            </p>
+          <div className="home-updates-note">
+            <span>Em construção · TI</span>
+            <h3>Conectando ideias</h3>
+            <p>O site da CCS é nosso primeiro espaço para apresentar as pessoas, os projetos e as atividades da cooperativa.</p>
           </div>
         </Reveal>
       </section>
 
-      <section id="valores" className="section-pad scroll-mt-24 bg-white">
-        <Reveal className="site-container rounded-[28px] bg-brand-navy p-8 text-white sm:p-12 lg:p-16">
-          <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-yellow">
-            O que nos guia
-          </p>
-          <h2 className="mt-4 max-w-3xl text-3xl font-extrabold tracking-tight sm:text-4xl">
-            Cooperação para gerar transformação social.
-          </h2>
-          <p className="mt-5 max-w-2xl text-base leading-8 text-white/80 sm:text-lg">
-            Acreditamos que a cultura e a inovação criam oportunidades quando
-            caminham com respeito, inclusão e responsabilidade.
-          </p>
-          <ul className="mt-9 flex flex-wrap gap-3" aria-label="Valores da CCS">
-            {valores.map((valor) => (
-              <li
-                key={valor.nome}
-                className="rounded-full border border-white/25 px-4 py-2 text-sm font-semibold text-white"
-              >
-                {valor.nome}
-              </li>
-            ))}
-          </ul>
-          <Link
-            to="/valores"
-            className="mt-8 inline-flex items-center gap-2 font-bold text-brand-yellow hover:text-white"
-          >
-            Conheça nossos valores <span aria-hidden="true">→</span>
-          </Link>
+      <section id="valores" className="home-values section-pad scroll-mt-20">
+        <Reveal className="site-container">
+          <p className="eyebrow home-values-eyebrow">O que nos move</p>
+          <h2>Fazer junto muda o que é possível</h2>
+          <p>Cooperação, respeito e inclusão orientam cada projeto. A cultura abre o caminho; as pessoas dão sentido a ele.</p>
+          <ul aria-label="Valores da CCS">{valores.map((valor) => <li key={valor.nome}>{valor.nome}</li>)}</ul>
+          <Link to="/valores" className="home-values-link">Todos os nossos valores <span aria-hidden="true">→</span></Link>
         </Reveal>
       </section>
     </main>
-  );
+  )
 }

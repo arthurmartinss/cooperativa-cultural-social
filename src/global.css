@@ -9,24 +9,47 @@
 }
 
 @theme {
-  --color-brand-navy: #012869;
+  --color-brand-deep: #012869;
+  --color-brand-navy: #123a70;
   --color-brand-blue: #0877fd;
   --color-brand-action: #0059c7;
   --color-brand-yellow: #fec504;
-  --color-brand-ink: #14213b;
-  --color-brand-muted: #4d5b72;
-  --color-brand-surface: #f5f8fc;
-  --color-brand-sky: #eaf2ff;
-  --color-brand-line: #dfe7f2;
+  --color-brand-ink: #17263a;
+  --color-brand-muted: #586775;
+  --color-brand-page: #faf8f3;
+  --color-brand-paper: #fffdf9;
+  --color-brand-surface: #f1eee7;
+  --color-brand-sky: #e8eef6;
+  --color-brand-line: #d8dedf;
 }
 
 :root {
   font-family: "Inter Variable", Inter, system-ui, sans-serif;
   color: var(--color-brand-ink);
-  background: #fff;
+  background: var(--color-brand-page);
+  color-scheme: light;
+  --hero-transition-end: #f1eee7;
+  --button-background: #012869;
+  --button-color: #fff;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+}
+
+:root[data-theme="dark"] {
+  --color-brand-navy: #c9ddff;
+  --color-brand-action: #9cc8ff;
+  --color-brand-ink: #f2f4f1;
+  --color-brand-muted: #bac7d5;
+  --color-brand-page: #101a29;
+  --color-brand-paper: #1c2a3d;
+  --color-brand-surface: #152337;
+  --color-brand-sky: #263a53;
+  --color-brand-line: #3b4b60;
+  --hero-transition-end: #152337;
+  --button-background: #fec504;
+  --button-color: #012869;
+  color-scheme: dark;
 }
 
 html {
@@ -36,6 +59,12 @@ html {
 body {
   margin: 0;
   min-width: 320px;
+  background: var(--color-brand-page);
+  transition: background-color 250ms ease, color 250ms ease;
+}
+
+:where(main h1, main h2, main h3) {
+  text-wrap: balance;
 }
 
 .site-container {
@@ -72,25 +101,31 @@ body {
 }
 
 .button-primary {
-  background: var(--color-brand-navy);
-  color: #fff;
+  background: var(--button-background);
+  color: var(--button-color);
   box-shadow: 0 8px 22px rgb(1 40 105 / 0.12);
 }
 
 .button-primary:hover {
-  background: #003d91;
+  background: var(--color-brand-action);
+  color: #fff;
   transform: translateY(-2px);
 }
 
 .button-secondary {
   border: 1px solid var(--color-brand-line);
-  background: #fff;
+  background: var(--color-brand-paper);
   color: var(--color-brand-navy);
 }
 
 .button-secondary:hover {
-  border-color: var(--color-brand-blue);
+  border-color: var(--color-brand-action);
   background: var(--color-brand-sky);
+}
+
+:root[data-theme="dark"] .button-primary:hover {
+  background: #ffdb53;
+  color: var(--color-brand-deep);
 }
 
 :where(a, button, summary):focus-visible {

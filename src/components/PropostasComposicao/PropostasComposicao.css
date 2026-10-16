@@ -1,6 +1,6 @@
 .composition-proposals {
   padding-block: 4.5rem;
-  background: #fff;
+  background: var(--color-brand-paper);
 }
 
 .composition-proposals-heading {
@@ -50,7 +50,7 @@
   padding: .85rem;
   border: 1px solid var(--curation-line);
   border-radius: .9rem;
-  background: #fff;
+  background: var(--color-brand-paper);
 }
 
 .composition-option-label {
@@ -212,7 +212,7 @@
   overflow: hidden;
   border: 1px solid var(--curation-line);
   border-radius: .5rem;
-  background: #f7f9fc;
+  background: var(--color-brand-surface);
 }
 
 .composition-project-card .composition-photo {

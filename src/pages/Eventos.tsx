@@ -7,13 +7,13 @@ interface ListaAtualizacoesProps {
 
 function ListaAtualizacoes({ itens, vazio }: ListaAtualizacoesProps) {
   if (itens.length === 0) {
-    return <p className="rounded-2xl border border-dashed border-brand-line bg-white px-6 py-10 text-brand-muted">{vazio}</p>
+    return <p className="rounded-2xl border border-dashed border-brand-line bg-brand-paper px-6 py-10 text-brand-muted">{vazio}</p>
   }
 
   return (
     <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
       {itens.map((item) => (
-        <article key={`${item.data}-${item.titulo}`} className="rounded-2xl border border-brand-line bg-white p-7 shadow-sm">
+        <article key={`${item.data}-${item.titulo}`} className="rounded-2xl border border-brand-line bg-brand-paper p-7 shadow-sm">
           <p className="text-xs font-bold uppercase tracking-widest text-brand-action">{item.data}{item.setor ? ` · ${item.setor}` : ''}</p>
           <h3 className="mt-4 text-xl font-bold text-brand-ink">{item.titulo}</h3>
           <p className="mt-3 text-sm leading-6 text-brand-muted">{item.resumo}</p>
@@ -29,8 +29,8 @@ export default function Eventos() {
       <section className="bg-brand-surface px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-7xl">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-action">CCS em movimento</p>
-          <h1 className="mt-5 max-w-4xl text-4xl font-bold tracking-tight text-brand-ink sm:text-6xl">Eventos e resultados da cooperativa.</h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-brand-muted">Acompanhe as atividades, os projetos e as entregas que tornam o trabalho coletivo da CCS visível para a comunidade.</p>
+          <h1 className="mt-5 max-w-4xl text-4xl font-semibold tracking-tight text-brand-ink sm:text-6xl">O que a CCS está fazendo</h1>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-brand-muted">Eventos confirmados, projetos em andamento e resultados das equipes ficam reunidos aqui.</p>
         </div>
       </section>
 

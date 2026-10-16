@@ -6,14 +6,14 @@ export default function Valores() {
       <section className="bg-brand-surface px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-7xl">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-action">O que nos guia</p>
-          <h1 className="mt-5 max-w-4xl text-4xl font-bold tracking-tight text-brand-ink sm:text-6xl">Valores que orientam a nossa cooperação.</h1>
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-brand-muted">A CCS une pessoas e áreas diferentes em torno de princípios compartilhados.</p>
+          <h1 className="mt-5 max-w-4xl text-4xl font-semibold tracking-tight text-brand-ink sm:text-6xl">O jeito CCS de trabalhar</h1>
+          <p className="mt-6 max-w-3xl text-lg leading-8 text-brand-muted">Esses valores ajudam a decidir como criamos, convivemos e trabalhamos em equipe.</p>
         </div>
       </section>
       <section className="px-5 py-20 sm:px-8 sm:py-24">
         <div className="mx-auto grid max-w-7xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {valores.map((valor, indice) => (
-            <article key={valor.nome} className="rounded-2xl border border-brand-line bg-white p-7 shadow-sm">
+            <article key={valor.nome} className="rounded-2xl border border-brand-line bg-brand-paper p-7 shadow-sm">
               <span aria-hidden="true" className="text-xs font-bold tracking-[0.2em] text-brand-action">{String(indice + 1).padStart(2, '0')}</span>
               <h2 className="mt-5 text-2xl font-bold text-brand-ink">{valor.nome}</h2>
               <p className="mt-3 leading-7 text-brand-muted">{valor.descricao}</p>

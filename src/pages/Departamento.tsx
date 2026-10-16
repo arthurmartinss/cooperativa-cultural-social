@@ -11,13 +11,13 @@ import Reveal from '../components/Reveal/Reveal'
 const galeriasDepartamento = {
   artes: {
     eyebrow: 'Expressão e criação',
-    title: 'A arte ganha forma de muitos jeitos.',
+    title: 'A arte ganha forma de muitos jeitos',
     description: 'Cores, gestos e processos criativos mostram como cada pessoa e cultura encontra sua própria maneira de se expressar.',
     layout: 'pair' as const,
   },
   esporte: {
     eyebrow: 'Corpo, cultura e encontro',
-    title: 'O esporte também aproxima culturas.',
+    title: 'O esporte também aproxima culturas',
     description: 'Práticas diferentes compartilham movimento, estratégia e participação, criando novas formas de estar em grupo.',
     layout: 'triptych' as const,
   },
@@ -46,7 +46,7 @@ export default function Departamento({ departamento }: DepartamentoProps) {
           </Reveal>
           <Reveal delay={0.12}>
           {destaque ? (
-            <figure className="relative isolate flex min-h-[320px] overflow-hidden rounded-[28px] bg-brand-navy shadow-[0_30px_70px_rgba(1,40,105,0.16)] sm:min-h-[390px]">
+            <figure className="relative isolate flex min-h-[320px] overflow-hidden rounded-[28px] bg-brand-deep shadow-[0_30px_70px_rgba(1,40,105,0.16)] sm:min-h-[390px]">
               <img
                 src={destaque.src}
                 srcSet={destaque.srcSet}
@@ -56,28 +56,28 @@ export default function Departamento({ departamento }: DepartamentoProps) {
                 decoding="async"
                 className="absolute inset-0 h-full w-full object-cover"
               />
-              <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-brand-navy/15 to-transparent" />
+              <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-brand-deep/90 via-brand-deep/15 to-transparent" />
               <figcaption className="relative z-10 mt-auto flex w-full flex-col gap-3 p-6 text-white sm:p-8">
-                <span className="w-fit rounded-full bg-brand-yellow px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-brand-navy">{departamento.nome}</span>
+                <span className="w-fit rounded-full bg-brand-yellow px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-brand-deep">{departamento.nome}</span>
                 <p className="text-sm text-white/80">{destaque.legenda}</p>
                 <p className="text-[11px] text-white/65">Foto: <a className="underline decoration-white/35 underline-offset-2 hover:text-white" href={destaque.perfilUrl} target="_blank" rel="noreferrer">{destaque.fotografo}</a> · <a className="underline decoration-white/35 underline-offset-2 hover:text-white" href={destaque.fotoUrl} target="_blank" rel="noreferrer">Unsplash</a></p>
               </figcaption>
             </figure>
           ) : (
-            <div className="relative flex min-h-[320px] items-center justify-center overflow-hidden rounded-[28px] bg-brand-navy p-8 sm:min-h-[390px]">
+            <div className="relative flex min-h-[320px] items-center justify-center overflow-hidden rounded-[28px] bg-brand-deep p-8 sm:min-h-[390px]">
               <span aria-hidden="true" className="absolute -right-6 -top-12 text-[13rem] font-black leading-none text-white/5">{departamento.sigla}</span>
               <div aria-hidden="true" className="absolute -bottom-24 -left-24 h-56 w-56 rounded-full border-[42px] border-brand-blue/30" />
               <div aria-hidden="true" className="relative z-10 flex h-52 w-52 items-center justify-center rounded-full border border-white/15 bg-white/10 text-brand-yellow shadow-[0_20px_60px_rgba(0,0,0,0.18)] sm:h-64 sm:w-64">
                 {IconeDepartamento && <IconeDepartamento size={112} strokeWidth={1.5} className="drop-shadow-[0_8px_18px_rgba(254,197,4,0.15)] sm:h-32 sm:w-32" />}
               </div>
-              <span className="absolute bottom-6 left-6 z-20 rounded-full bg-brand-yellow px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-brand-navy">{departamento.nome}</span>
+              <span className="absolute bottom-6 left-6 z-20 rounded-full bg-brand-yellow px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-brand-deep">{departamento.nome}</span>
             </div>
           )}
           </Reveal>
         </div>
       </section>
 
-      <section className="section-pad bg-white">
+      <section className="section-pad bg-brand-paper">
         <Reveal className="site-container grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
           <div>
             <p className="eyebrow">O que fazemos</p>
