@@ -31,11 +31,11 @@ export default function Cabecalho() {
           </summary>
           <nav aria-label="Navegação móvel" className="absolute right-0 top-full mt-3 flex w-[min(18rem,calc(100vw-3rem))] flex-col gap-1 rounded-2xl border border-brand-line bg-white p-3 shadow-xl">
             {links.map((link) => (
-              <Link key={link.destino} to={link.destino} onClick={(evento) => evento.currentTarget.closest('details')?.removeAttribute('open')} className="rounded-lg px-4 py-3 text-sm font-semibold text-brand-ink hover:bg-brand-surface hover:text-brand-navy">
+              <NavLink key={link.destino} to={link.destino} end={link.destino === '/'} onClick={(evento) => evento.currentTarget.closest('details')?.removeAttribute('open')} className={({ isActive }) => `rounded-lg px-4 py-3 text-sm font-semibold transition-colors ${isActive ? 'bg-brand-sky text-brand-navy' : 'text-brand-ink hover:bg-brand-surface hover:text-brand-navy'}`}>
                 {link.nome}
-              </Link>
+              </NavLink>
             ))}
-            <Link to="/eventos" onClick={(evento) => evento.currentTarget.closest('details')?.removeAttribute('open')} className="button-primary mt-2">Eventos e resultados</Link>
+            <NavLink to="/eventos" onClick={(evento) => evento.currentTarget.closest('details')?.removeAttribute('open')} className="button-primary mt-2">Eventos e resultados</NavLink>
           </nav>
         </details>
       </div>
