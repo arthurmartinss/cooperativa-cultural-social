@@ -12,7 +12,7 @@ export default function Cabecalho() {
     <header className="sticky top-0 z-50 border-b border-brand-line bg-white/95 backdrop-blur-lg">
       <div className="site-container flex min-h-20 items-center justify-between gap-2 py-3 sm:gap-4">
         <Link to="/" aria-label="CCS, voltar ao início" className="shrink-0 rounded-lg">
-          <img src="/brand/ccs-logo-cabecalho.png" alt="CCS — Cooperativa Cultural Social" width="1600" height="420" className="h-11 w-auto rounded-md sm:h-14" />
+          <img src="/brand\ccs-simbolo.png" alt="CCS — Cooperativa Cultural Social" width="1600" height="420" className="h-11 w-auto rounded-md sm:h-14" />
         </Link>
 
         <nav aria-label="Navegação principal" className="hidden items-center gap-6 lg:flex">
