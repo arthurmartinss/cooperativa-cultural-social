@@ -1,4 +1,26 @@
+@import "@fontsource-variable/inter/wght.css";
 @import "tailwindcss";
+
+@theme {
+  --color-brand-navy: #012869;
+  --color-brand-blue: #0877fd;
+  --color-brand-action: #0059c7;
+  --color-brand-yellow: #fec504;
+  --color-brand-ink: #14213b;
+  --color-brand-muted: #4d5b72;
+  --color-brand-surface: #f5f8fc;
+  --color-brand-sky: #eaf2ff;
+  --color-brand-line: #dfe7f2;
+}
+
+:root {
+  font-family: "Inter Variable", Inter, system-ui, sans-serif;
+  color: var(--color-brand-ink);
+  background: #fff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
 
 html {
   scroll-behavior: smooth;
@@ -6,6 +28,70 @@ html {
 
 body {
   margin: 0;
-  background: #faf9f6;
-  font-family: Arial, Helvetica, sans-serif;
+  min-width: 320px;
+}
+
+.site-container {
+  width: min(100% - 3rem, 75rem);
+  margin-inline: auto;
+}
+
+.section-pad {
+  padding-block: clamp(4.5rem, 7vw, 7rem);
+}
+
+.eyebrow {
+  color: var(--color-brand-action);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.button-primary,
+.button-secondary {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.25rem;
+  transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.button-primary {
+  background: var(--color-brand-navy);
+  color: #fff;
+  box-shadow: 0 8px 22px rgb(1 40 105 / 0.12);
+}
+
+.button-primary:hover {
+  background: #003d91;
+  transform: translateY(-2px);
+}
+
+.button-secondary {
+  border: 1px solid var(--color-brand-line);
+  background: #fff;
+  color: var(--color-brand-navy);
+}
+
+.button-secondary:hover {
+  border-color: var(--color-brand-blue);
+  background: var(--color-brand-sky);
+}
+
+:where(a, button, summary):focus-visible {
+  outline: 3px solid var(--color-brand-blue);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }

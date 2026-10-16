@@ -8,34 +8,45 @@ interface DepartamentoProps {
 export default function Departamento({ departamento }: DepartamentoProps) {
   return (
     <main>
-      <section className="bg-[#e8f0ec] px-5 py-20 sm:px-8 sm:py-28">
-        <div className="mx-auto max-w-7xl">
-          <Link to="/" className="text-sm font-bold text-teal-800 hover:text-teal-950 focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700">← Voltar para a CCS</Link>
-          <p className="mt-12 text-xs font-bold uppercase tracking-[0.2em] text-teal-800">Departamento da CCS</p>
-          <h1 className="mt-4 max-w-4xl text-4xl font-bold tracking-tight text-stone-950 sm:text-6xl">{departamento.nome}</h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-stone-700">{departamento.descricao}</p>
-        </div>
-      </section>
-
-      <section className="px-5 py-20 sm:px-8 sm:py-24">
-        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
-          <h2 className="text-3xl font-bold text-stone-950 sm:text-4xl">Objetivo do setor</h2>
+      <section className="section-pad bg-brand-surface">
+        <div className="site-container grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           <div>
-            {departamento.objetivo ? (
-              <p className="text-lg leading-8 text-stone-700">{departamento.objetivo}</p>
-            ) : (
-              <p className="rounded-2xl border border-dashed border-stone-300 p-6 text-stone-600">As informações deste setor estão em preparação.</p>
-            )}
-            <Link to="/eventos" className="mt-8 inline-flex rounded-xl bg-teal-800 px-6 py-3 font-semibold text-white hover:bg-teal-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-800">Acompanhar eventos e resultados</Link>
+            <Link to="/setores" className="inline-flex items-center gap-2 text-sm font-bold text-brand-navy hover:text-brand-action"><span aria-hidden="true">←</span> Todos os setores</Link>
+            <p className="eyebrow mt-10">Departamento da CCS</p>
+            <h1 className="mt-4 max-w-3xl text-[clamp(2.25rem,4.5vw,3.5rem)] font-extrabold leading-[1.1] tracking-tight text-brand-ink">{departamento.nome}</h1>
+            <p className="mt-6 max-w-2xl text-base leading-8 text-brand-muted sm:text-lg">{departamento.descricao}</p>
+            <Link to="/eventos" className="button-primary mt-8">Acompanhar eventos e resultados <span aria-hidden="true">↗</span></Link>
+          </div>
+          <div className="relative flex min-h-[320px] items-center justify-center overflow-hidden rounded-[28px] bg-brand-navy p-8 sm:min-h-[390px]">
+            <span aria-hidden="true" className="absolute -right-6 -top-12 text-[13rem] font-black leading-none text-white/5">{departamento.sigla}</span>
+            <div aria-hidden="true" className="absolute -bottom-24 -left-24 h-56 w-56 rounded-full border-[42px] border-brand-blue/30" />
+            <img src="/brand/ccs-simbolo.png" alt="" width="1080" height="1080" className="relative z-10 w-full max-w-[290px]" />
+            <span className="absolute bottom-6 left-6 z-20 rounded-full bg-brand-yellow px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-brand-navy">{departamento.nome}</span>
           </div>
         </div>
       </section>
 
-      <section className="bg-stone-100 px-5 py-20 sm:px-8 sm:py-24">
-        <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-teal-800">Nossa equipe</p>
-          <h2 className="mt-4 text-3xl font-bold text-stone-950 sm:text-4xl">Organograma de {departamento.nome}</h2>
-          <div className="mt-8 rounded-2xl border border-dashed border-stone-300 bg-white p-8 text-stone-600">
+      <section className="section-pad bg-white">
+        <div className="site-container grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+          <div>
+            <p className="eyebrow">O que fazemos</p>
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-brand-ink sm:text-4xl">Objetivo do setor</h2>
+          </div>
+          <div>
+            {departamento.objetivo ? (
+              <p className="text-base leading-8 text-brand-muted sm:text-lg">{departamento.objetivo}</p>
+            ) : (
+              <p className="rounded-2xl border border-dashed border-brand-line p-6 text-brand-muted">As informações deste setor estão em preparação.</p>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-pad bg-brand-surface">
+        <div className="site-container">
+          <p className="eyebrow">Nossa equipe</p>
+          <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-brand-ink sm:text-4xl">Organograma de {departamento.nome}</h2>
+          <div className="mt-8 rounded-2xl border border-dashed border-brand-line bg-white p-8 text-brand-muted sm:p-10">
             O organograma deste setor será adicionado aqui quando a equipe enviar os nomes e cargos.
           </div>
         </div>

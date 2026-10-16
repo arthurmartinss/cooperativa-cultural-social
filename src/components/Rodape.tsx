@@ -2,20 +2,27 @@ import { Link } from 'react-router-dom'
 
 export default function Rodape() {
   return (
-    <footer className="bg-stone-900 px-5 py-10 text-stone-100 sm:px-8">
-      <div className="mx-auto flex max-w-7xl flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+    <footer className="bg-brand-navy py-14 text-white">
+      <div className="site-container grid gap-10 border-b border-white/20 pb-12 md:grid-cols-[1.4fr_1fr]">
         <div>
-          <p className="text-xl font-bold">CCS</p>
-          <p className="mt-1 text-sm text-stone-300">Cooperativa Cultural Social</p>
-          <p className="mt-3 max-w-md text-sm leading-6 text-stone-400">Pessoas, cultura e ideias trabalhando juntas para criar oportunidades.</p>
+          <Link to="/" className="inline-block rounded-lg" aria-label="CCS, voltar ao início">
+            <img src="/brand/ccs-logo-cabecalho.png" alt="CCS — Cooperativa Cultural Social" width="1600" height="420" className="h-18 w-auto" loading="lazy" />
+          </Link>
+          <p className="mt-4 max-w-md text-sm leading-7 text-white/75">Pessoas, cultura e ideias trabalhando juntas para criar oportunidades.</p>
         </div>
-        <div className="flex flex-col gap-3 text-sm font-semibold text-teal-200">
-          <Link to="/sobre" className="hover:text-white">A CCS</Link>
-          <Link to="/setores" className="hover:text-white">Setores</Link>
-          <Link to="/valores" className="hover:text-white">Valores</Link>
-          <Link to="/eventos" className="hover:text-white">Eventos e resultados</Link>
-          <Link to="/" className="hover:text-white">Voltar ao início ↑</Link>
+        <div>
+          <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand-yellow">Navegue pela CCS</p>
+          <nav aria-label="Navegação do rodapé" className="mt-5 grid grid-cols-2 gap-x-6 gap-y-4 text-sm font-semibold text-white/80">
+            <Link to="/sobre" className="hover:text-white">A CCS</Link>
+            <Link to="/setores" className="hover:text-white">Setores</Link>
+            <Link to="/valores" className="hover:text-white">Valores</Link>
+            <Link to="/eventos" className="hover:text-white">Eventos e resultados</Link>
+          </nav>
         </div>
+      </div>
+      <div className="site-container flex flex-col gap-3 pt-6 text-xs text-white/60 sm:flex-row sm:justify-between">
+        <span>© {new Date().getFullYear()} CCS — Cooperativa Cultural Social</span>
+        <Link to="/" className="w-fit font-semibold text-white/80 hover:text-white">Voltar ao início ↑</Link>
       </div>
     </footer>
   )
