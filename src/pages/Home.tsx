@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import ListaDepartamentos from "../components/ListaDepartamento/ListaDepartamentos";
+import GaleriaEditorial from "../components/GaleriaEditorial/GaleriaEditorial";
+import { fotoDestaqueHome, fotografiasHome, srcSetResponsivo, urlOtimizada } from "../data/fotografiasSelecionadas";
 import { valores } from "../data/valores";
 
 export default function Home() {
@@ -37,27 +39,28 @@ export default function Home() {
               Cultura e colaboração como instrumentos de transformação social.
             </p>
           </div>
-          <div className="relative isolate flex min-h-[340px] items-center justify-center overflow-hidden rounded-[28px] bg-brand-navy p-8 shadow-[0_30px_70px_rgba(1,40,105,0.16)] sm:min-h-[480px]">
-            <div
-              aria-hidden="true"
-              className="absolute -right-25 -top-25 h-65 w-65 rounded-full border-[52px] border-brand-blue/25"
-            />
-            <div
-              aria-hidden="true"
-              className="absolute -bottom-28 -left-20 h-64 w-64 rounded-full bg-brand-blue/20 blur-3xl"
-            />
+          <figure className="relative isolate flex min-h-[340px] overflow-hidden rounded-[28px] bg-brand-navy shadow-[0_30px_70px_rgba(1,40,105,0.16)] sm:min-h-[480px]">
             <img
-              src="/brand/ccs-simbolo.png"
-              alt="Símbolo da CCS, reunindo cultura, arte, esporte e pessoas"
-              width="1080"
-              height="1080"
-              className="relative z-10 w-full max-w-[370px]"
+              src={urlOtimizada(fotoDestaqueHome, 1400)}
+              srcSet={srcSetResponsivo(fotoDestaqueHome)}
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              width={fotoDestaqueHome.largura}
+              height={fotoDestaqueHome.altura}
+              alt={fotoDestaqueHome.alt}
+              loading="eager"
+              decoding="async"
               fetchPriority="high"
+              className="absolute inset-0 h-full w-full object-cover"
             />
-            <span className="absolute bottom-5 left-5 z-20 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-xs font-semibold tracking-wide text-white backdrop-blur-sm sm:bottom-7 sm:left-7">
-              Cultura • Arte • Esporte • Tecnologia
+            <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-brand-navy/15 to-brand-navy/5" />
+            <span className="absolute left-6 top-6 z-10 rounded-full border border-white/30 bg-brand-navy/50 px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-white backdrop-blur sm:left-8 sm:top-8">
+              CCS em colaboração
             </span>
-          </div>
+            <figcaption className="relative z-10 mt-auto w-full p-6 text-white sm:p-8">
+              <p className="max-w-lg text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl">{fotoDestaqueHome.legenda}</p>
+              <p className="mt-3 text-[10px] leading-4 text-white/65">Foto: <a className="font-medium text-white/75 underline decoration-white/35 underline-offset-2 transition-colors hover:text-white" href={fotoDestaqueHome.perfilUrl} target="_blank" rel="noreferrer">{fotoDestaqueHome.fotografo}</a> · <a className="font-medium text-white/75 underline decoration-white/35 underline-offset-2 transition-colors hover:text-white" href={fotoDestaqueHome.fotoUrl} target="_blank" rel="noreferrer">Unsplash</a></p>
+            </figcaption>
+          </figure>
         </div>
       </section>
 
@@ -89,6 +92,14 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <GaleriaEditorial
+        eyebrow="Ideias em movimento"
+        title="Cultura, pessoas e tecnologia em um mesmo espaço."
+        description="Imagens que representam os encontros, os espaços e a criação compartilhada que inspiram o trabalho da CCS."
+        photos={fotografiasHome}
+        layout="mosaic"
+      />
 
       <section id="setores" className="section-pad scroll-mt-24 bg-white">
         <div className="site-container">

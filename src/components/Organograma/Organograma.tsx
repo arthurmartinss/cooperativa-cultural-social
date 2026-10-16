@@ -3,23 +3,25 @@ import type { IconType } from 'react-icons'
 import './Organograma.css'
 
 interface OrganogramaProps {
-  nomeDepartamento: string
+  nomeEquipe: string
+  rotuloEquipe?: string
+  ariaLabel: string
   integrantes: Integrante[]
   IconeDepartamento: IconType
 }
 
-export default function Organograma({ nomeDepartamento, integrantes, IconeDepartamento }: OrganogramaProps) {
+export default function Organograma({ nomeEquipe, rotuloEquipe = 'Equipe', ariaLabel, integrantes, IconeDepartamento }: OrganogramaProps) {
   if (integrantes.length === 0) return null
 
   return (
-    <div className="organograma" role="group" aria-label={`Organograma do departamento de ${nomeDepartamento}`}>
+    <div className="organograma" role="group" aria-label={ariaLabel}>
       <div className="organograma__raiz">
         <span className="organograma__icone" aria-hidden="true">
           <IconeDepartamento size={24} strokeWidth={1.8} />
         </span>
         <div>
-          <span className="organograma__rotulo">Equipe</span>
-          <strong>{nomeDepartamento}</strong>
+          <span className="organograma__rotulo">{rotuloEquipe}</span>
+          <strong>{nomeEquipe}</strong>
         </div>
       </div>
 
@@ -35,7 +37,7 @@ export default function Organograma({ nomeDepartamento, integrantes, IconeDepart
               loading="lazy"
             />
             <h3>{integrante.nome}</h3>
-            {integrante.cargo && <p className="organograma__cargo">{integrante.cargo}</p>}
+            <p className="organograma__cargo">{integrante.cargo}</p>
           </li>
         ))}
       </ul>

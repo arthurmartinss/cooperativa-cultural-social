@@ -3,6 +3,23 @@ import type { Departamento as DepartamentoTipo } from '../data/departamentos'
 import { integrantesPorDepartamento } from '../data/integrantes'
 import { iconesDepartamentos } from '../data/iconesDepartamentos'
 import Organograma from '../components/Organograma/Organograma'
+import GaleriaEditorial from '../components/GaleriaEditorial/GaleriaEditorial'
+import { fotografiasPorDepartamento } from '../data/fotografiasSelecionadas'
+
+const galeriasDepartamento = {
+  artes: {
+    eyebrow: 'Expressão e criação',
+    title: 'A arte ganha forma de muitos jeitos.',
+    description: 'Cores, gestos e processos criativos mostram como cada pessoa e cultura encontra sua própria maneira de se expressar.',
+    layout: 'pair' as const,
+  },
+  esporte: {
+    eyebrow: 'Corpo, cultura e encontro',
+    title: 'O esporte também aproxima culturas.',
+    description: 'Práticas diferentes compartilham movimento, estratégia e participação, criando novas formas de estar em grupo.',
+    layout: 'triptych' as const,
+  },
+}
 
 interface DepartamentoProps {
   departamento: DepartamentoTipo
@@ -10,6 +27,8 @@ interface DepartamentoProps {
 
 export default function Departamento({ departamento }: DepartamentoProps) {
   const IconeDepartamento = iconesDepartamentos[departamento.slug]
+  const fotografias = fotografiasPorDepartamento[departamento.slug] ?? []
+  const galeria = galeriasDepartamento[departamento.slug as keyof typeof galeriasDepartamento]
 
   return (
     <main>
@@ -49,12 +68,23 @@ export default function Departamento({ departamento }: DepartamentoProps) {
         </div>
       </section>
 
+      {galeria && fotografias.length > 0 && (
+        <GaleriaEditorial
+          eyebrow={galeria.eyebrow}
+          title={galeria.title}
+          description={galeria.description}
+          photos={fotografias}
+          layout={galeria.layout}
+        />
+      )}
+
       <section className="section-pad bg-brand-surface">
         <div className="site-container">
           <p className="eyebrow">Nossa equipe</p>
           <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-brand-ink sm:text-4xl">Organograma de {departamento.nome}</h2>
           <Organograma
-            nomeDepartamento={departamento.nome}
+            nomeEquipe={departamento.nome}
+            ariaLabel={`Organograma do departamento de ${departamento.nome}`}
             integrantes={integrantesPorDepartamento[departamento.slug] ?? []}
             IconeDepartamento={IconeDepartamento}
           />
