@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import type { Departamento as DepartamentoTipo } from '../data/departamentos'
+import { departamentos, type Departamento as DepartamentoTipo } from '../data/departamentos'
 import { integrantesPorDepartamento } from '../data/integrantes'
 import { iconesDepartamentos } from '../data/iconesDepartamentos'
 import Organograma from '../components/Organograma/Organograma'
@@ -32,6 +32,9 @@ export default function Departamento({ departamento }: DepartamentoProps) {
   const fotografias = fotografiasPorDepartamento[departamento.slug] ?? []
   const galeria = galeriasDepartamento[departamento.slug as keyof typeof galeriasDepartamento]
   const destaque = destaquesDepartamentos[departamento.slug]
+  const integrantes = integrantesPorDepartamento[departamento.slug] ?? []
+  const indiceDepartamento = departamentos.findIndex(({ slug }) => slug === departamento.slug)
+  const proximosDepartamentos = [1, 2].map((distancia) => departamentos[(indiceDepartamento + distancia) % departamentos.length])
 
   return (
     <main>
@@ -42,7 +45,10 @@ export default function Departamento({ departamento }: DepartamentoProps) {
             <p className="eyebrow mt-10">Departamento da CCS</p>
             <h1 className="mt-4 max-w-3xl text-[clamp(2.25rem,4.5vw,3.5rem)] font-extrabold leading-[1.1] tracking-tight text-brand-ink">{departamento.nome}</h1>
             <p className="mt-6 max-w-2xl text-base leading-8 text-brand-muted sm:text-lg">{departamento.descricao}</p>
-            <Link to="/eventos" className="button-primary mt-8">Acompanhar eventos e resultados <span aria-hidden="true">↗</span></Link>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link to="/eventos" className="button-primary">Acompanhar eventos e resultados <span aria-hidden="true">↗</span></Link>
+              {integrantes.length > 0 && <a href="#equipe" className="button-secondary">Conheça a equipe <span aria-hidden="true">↓</span></a>}
+            </div>
           </Reveal>
           <Reveal delay={0.12}>
           {destaque ? (
@@ -83,7 +89,7 @@ export default function Departamento({ departamento }: DepartamentoProps) {
             <p className="eyebrow">O que fazemos</p>
             <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-brand-ink sm:text-4xl">Objetivo do setor</h2>
           </div>
-          <div>
+          <div className="border-l-[3px] border-brand-yellow pl-6 sm:pl-8">
             {departamento.objetivo ? (
               <p className="text-base leading-8 text-brand-muted sm:text-lg">{departamento.objetivo}</p>
             ) : (
@@ -103,17 +109,46 @@ export default function Departamento({ departamento }: DepartamentoProps) {
         />
       )}
 
-      <section className="section-pad bg-brand-surface">
+      <section id="equipe" className="section-pad scroll-mt-24 bg-brand-surface">
         <div className="site-container">
           <p className="eyebrow">Nossa equipe</p>
-          <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-brand-ink sm:text-4xl">Organograma de {departamento.nome}</h2>
+          <div className="mt-4 flex flex-wrap items-end justify-between gap-4">
+            <h2 className="text-3xl font-extrabold tracking-tight text-brand-ink sm:text-4xl">Organograma de {departamento.nome}</h2>
+            {integrantes.length > 0 && <span className="rounded-full border border-brand-line bg-brand-paper px-4 py-2 text-sm font-semibold text-brand-muted">{integrantes.length} {integrantes.length === 1 ? 'pessoa' : 'pessoas'}</span>}
+          </div>
           <Organograma
             nomeEquipe={departamento.nome}
             ariaLabel={`Organograma do departamento de ${departamento.nome}`}
-            integrantes={integrantesPorDepartamento[departamento.slug] ?? []}
+            integrantes={integrantes}
             IconeDepartamento={IconeDepartamento}
           />
         </div>
+      </section>
+
+      <section className="section-pad bg-brand-paper" aria-labelledby="outros-setores-titulo">
+        <Reveal className="site-container">
+          <div className="flex flex-wrap items-end justify-between gap-5">
+            <div>
+              <p className="eyebrow">Continue explorando</p>
+              <h2 id="outros-setores-titulo" className="mt-4 text-3xl font-extrabold tracking-tight text-brand-ink sm:text-4xl">Outras áreas da CCS</h2>
+            </div>
+            <Link to="/setores" className="inline-flex min-h-11 items-center gap-2 font-bold text-brand-navy hover:text-brand-action">Ver todos os setores <span aria-hidden="true">→</span></Link>
+          </div>
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            {proximosDepartamentos.map((proximo) => {
+              const Icone = iconesDepartamentos[proximo.slug]
+              return (
+                <Link key={proximo.slug} to={`/departamentos/${proximo.slug}`} className="group relative flex min-h-60 flex-col overflow-hidden rounded-3xl border border-brand-line bg-brand-surface p-7 transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-1 hover:border-brand-action hover:shadow-[0_18px_40px_rgba(1,40,105,0.1)] sm:p-8">
+                  <span aria-hidden="true" className="absolute -right-2 -top-7 text-[8rem] font-black leading-none text-brand-line/50">{proximo.sigla}</span>
+                  <span aria-hidden="true" className="relative grid h-12 w-12 place-items-center rounded-2xl bg-brand-sky text-brand-navy">{Icone && <Icone size={25} strokeWidth={1.8} />}</span>
+                  <h3 className="relative mt-6 text-xl font-bold text-brand-ink">{proximo.nome}</h3>
+                  <p className="relative mt-2 max-w-md text-sm leading-6 text-brand-muted">{proximo.descricao}</p>
+                  <span className="relative mt-auto flex items-center gap-2 pt-6 text-sm font-bold text-brand-navy group-hover:text-brand-action">Conhecer setor <span aria-hidden="true">→</span></span>
+                </Link>
+              )
+            })}
+          </div>
+        </Reveal>
       </section>
     </main>
   )
