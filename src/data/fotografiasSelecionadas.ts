@@ -69,6 +69,42 @@ export const fotografiasHome: FotografiaSelecionada[] = [
   },
 ]
 
+export const fotografiasSobre: FotografiaSelecionada[] = [
+  {
+    id: 'HleggUczDFc',
+    alt: 'Pessoa caminhando diante de um mural colorido sobre comunidade.',
+    legenda: 'Arte que ocupa a cidade',
+    largura: 3000,
+    altura: 2250,
+    rawUrl: 'https://images.unsplash.com/photo-1778843211806-21f4b548afbd?ixid=M3wxMTAzOTQ1fDB8MXxzZWFyY2h8Nnx8Y3JlYXRpdmUlMjBjb21tdW5pdHl8ZW58MXwwfHx8MTc5MjM2MTA2Mnww&ixlib=rb-4.1.0',
+    fotoUrl: 'https://unsplash.com/photos/a-person-walks-past-a-vibrant-community-mural-HleggUczDFc?utm_source=cooperativa_cultural_social&utm_medium=referral',
+    fotografo: 'aurélie sgnl',
+    perfilUrl: 'https://unsplash.com/@entre2vue?utm_source=cooperativa_cultural_social&utm_medium=referral',
+  },
+  {
+    id: 'rLXU8ajlQ9Q',
+    alt: 'Mural de rua com formas coloridas e a palavra Believe.',
+    legenda: 'Ideias que ganham as ruas',
+    largura: 6000,
+    altura: 4000,
+    rawUrl: 'https://images.unsplash.com/photo-1560350894-68244ac04656?ixid=M3wxMTAzOTQ1fDB8MXxzZWFyY2h8M3x8Y29sb3JmdWwlMjBtdXJhbHxlbnwxfDB8fHwxNzkyMzYxMTQxfDA&ixlib=rb-4.1.0',
+    fotoUrl: 'https://unsplash.com/photos/believe-mural-painting-rLXU8ajlQ9Q?utm_source=cooperativa_cultural_social&utm_medium=referral',
+    fotografo: 'Ran Berkovich',
+    perfilUrl: 'https://unsplash.com/@berko?utm_source=cooperativa_cultural_social&utm_medium=referral',
+  },
+  {
+    id: 'BRAeIZqmuBY',
+    alt: 'Pessoas reunidas à noite em um café ao ar livre, diante de um mural.',
+    legenda: 'Lugares para se encontrar',
+    largura: 6192,
+    altura: 4128,
+    rawUrl: 'https://images.unsplash.com/photo-1758989814017-cd5110370de8?ixid=M3wxMTAzOTQ1fDB8MXxzZWFyY2h8NjF8fGNvbG9yZnVsJTIwbXVyYWx8ZW58MXwwfHx8MTc5MjM2MTIwM3ww&ixlib=rb-4.1.0',
+    fotoUrl: 'https://unsplash.com/photos/outdoor-cafe-with-mural-and-string-lights-at-night-BRAeIZqmuBY?utm_source=cooperativa_cultural_social&utm_medium=referral',
+    fotografo: 'Lior Mamedov',
+    perfilUrl: 'https://unsplash.com/@liormam?utm_source=cooperativa_cultural_social&utm_medium=referral',
+  },
+]
+
 export const fotografiasPorDepartamento: Record<string, FotografiaSelecionada[]> = {
   artes: [
     {
