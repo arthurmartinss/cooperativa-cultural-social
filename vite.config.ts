@@ -1,4 +1,5 @@
 import react from '@vitejs/plugin-react'
+import { fileURLToPath } from 'node:url'
 import { defineConfig, loadEnv, type Plugin } from 'vite'
 import tailwindcss from '@tailwindcss/vite'
 import { handleUnsplashDownload, handleUnsplashSearch } from './src/server/unsplashSearch.js'
@@ -43,8 +44,11 @@ async function readRequestBody(request: import('node:http').IncomingMessage) {
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
-  const serverEnv = loadEnv(mode, process.cwd(), 'UNSPLASH_')
+  const appDirectory = fileURLToPath(new URL('.', import.meta.url))
+  const serverEnv = loadEnv(mode, appDirectory, 'UNSPLASH_')
+  const accessKey = serverEnv.UNSPLASH_ACCESS_KEY?.trim() || process.env.UNSPLASH_ACCESS_KEY?.trim()
   return {
-    plugins: [react(), tailwindcss(), unsplashDevApi(serverEnv.UNSPLASH_ACCESS_KEY ?? process.env.UNSPLASH_ACCESS_KEY)],
+    envDir: appDirectory,
+    plugins: [react(), tailwindcss(), unsplashDevApi(accessKey)],
   }
 })
