@@ -10,13 +10,14 @@ A CCS reúne pessoas de diferentes áreas para criar projetos culturais e sociai
 | --- | --- |
 | [Início](https://cooperativa-cultural-social.vercel.app/) | Apresentação da CCS, setores, imagens e valores. |
 | [CCS](https://cooperativa-cultural-social.vercel.app/sobre) | Propósito, missão e visão da cooperativa. |
-| [Gestores](https://cooperativa-cultural-social.vercel.app/gestores) | Pessoas responsáveis pela gestão da CCS. |
+| [Equipe](https://cooperativa-cultural-social.vercel.app/equipe) | Gestores da CCS e integrantes de cada setor, com fotos e cargos. |
 | [Setores](https://cooperativa-cultural-social.vercel.app/setores) | Marketing, Recursos Humanos, TI, Esporte, Artes e Turismo. Cada setor tem sua página e seu organograma. |
 | [Valores](https://cooperativa-cultural-social.vercel.app/valores) | Princípios que orientam o trabalho da cooperativa. |
 | [Eventos](https://cooperativa-cultural-social.vercel.app/eventos) | Espaço para divulgar eventos confirmados, entregas e resultados. |
 | [Curadoria](https://cooperativa-cultural-social.vercel.app/curadoria) | Pesquisa e seleção de imagens para possíveis usos no projeto. |
 
 As informações de alguns setores e os próximos eventos ainda estão sendo preparados pela equipe. O site mostra esse estado sem anunciar atividades que não foram confirmadas.
+O endereço antigo `/gestores` leva à página Equipe.
 
 ## Tecnologias
 

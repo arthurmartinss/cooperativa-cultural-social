@@ -4,7 +4,7 @@ import natalia from '../assets/gestores-ccs/natalia.jpeg'
 import type { Integrante } from './integrantes'
 
 export const gestoresCcs: Integrante[] = [
-  { nome: 'Lucas', cargo: 'Gestor da empresa', foto: lucas },
-  { nome: 'Ana Luisa', cargo: 'Gestor da empresa', foto: anaLuisa },
-  { nome: 'Natália', cargo: 'Gestor da empresa', foto: natalia },
+  { nome: 'Lucas', cargo: 'Gestor da CCS', foto: lucas },
+  { nome: 'Ana Luisa', cargo: 'Gestora da CCS', foto: anaLuisa },
+  { nome: 'Natália', cargo: 'Gestora da CCS', foto: natalia },
 ]

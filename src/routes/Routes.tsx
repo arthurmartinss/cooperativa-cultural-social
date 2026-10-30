@@ -1,10 +1,10 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, Navigate } from 'react-router-dom'
 import App from '../App'
 import { departamentos } from '../data/departamentos'
 import Departamento from '../pages/Departamento'
 import Eventos from '../pages/Eventos'
 import Curadoria from '../pages/Curadoria'
-import Gestores from '../pages/Gestores'
+import Equipe from '../pages/Equipe'
 import Home from '../pages/Home'
 import NaoEncontrado from '../pages/NaoEncontrado'
 import Setores from '../pages/Setores'
@@ -19,7 +19,8 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: 'sobre', element: <Sobre /> },
       { path: 'setores', element: <Setores /> },
-      { path: 'gestores', element: <Gestores /> },
+      { path: 'equipe', element: <Equipe /> },
+      { path: 'gestores', element: <Navigate to="/equipe" replace /> },
       { path: 'valores', element: <Valores /> },
       { path: 'eventos', element: <Eventos /> },
       { path: 'curadoria', element: <Curadoria /> },

@@ -26,6 +26,11 @@
 .home-about-text { align-self: end; max-width: 37rem; color: var(--color-brand-muted); font-size: clamp(1rem, 1.5vw, 1.125rem); line-height: 1.8; }
 .home-text-link { display: inline-flex; gap: 0.5rem; margin-top: 1.5rem; color: var(--color-brand-navy); font-size: 0.95rem; font-weight: 700; }
 .home-text-link:hover { color: var(--color-brand-action); }
+.home-team { background: var(--color-brand-paper); }
+.home-team-grid { display: grid; gap: 1.5rem; }
+.home-team h2 { max-width: 24rem; margin-top: 0.8rem; color: var(--color-brand-ink); font-size: clamp(2rem, 4vw, 3.35rem); font-weight: 650; line-height: 1.1; letter-spacing: -0.055em; }
+.home-team-grid > div:last-child { align-self: end; }
+.home-team-grid > div:last-child > p { max-width: 31rem; color: var(--color-brand-muted); font-size: 1.05rem; line-height: 1.8; }
 .home-updates { background: var(--color-brand-paper); }
 .home-updates-grid { display: grid; align-items: center; gap: 2rem; }
 .home-updates h2 { color: var(--color-brand-ink); }
@@ -43,6 +48,6 @@
 .home-values li { border: 1px solid rgb(255 255 255 / 28%); border-radius: 99px; padding: 0.55rem 0.95rem; font-size: 0.86rem; font-weight: 600; }
 .home-values-link { display: inline-flex; gap: 0.5rem; margin-top: 2rem; color: #fec504; font-size: 0.94rem; font-weight: 700; }
 .home-values-link:hover { color: #fff; }
-@media (min-width: 900px) { .home-hero-grid { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); } .home-about-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); gap: 5rem; } .home-updates-grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.8fr); gap: 5rem; } }
+@media (min-width: 900px) { .home-hero-grid { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); } .home-about-grid, .home-team-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); gap: 5rem; } .home-updates-grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.8fr); gap: 5rem; } }
 @media (max-width: 600px) { .home-hero { padding-top: 4.5rem; } .home-hero-figure { min-height: 25rem; } .home-hero-figure figcaption { padding: 1.5rem; } .home-about { margin-top: -2rem; border-radius: 2rem 2rem 0 0; } }
 @media (prefers-reduced-motion: reduce) { .home-hero-primary, .home-hero-secondary { transition: none; } }

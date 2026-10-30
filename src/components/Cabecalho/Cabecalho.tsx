@@ -7,7 +7,7 @@ import './Cabecalho.css'
 const links = [
   { nome: 'Início', destino: '/' },
   { nome: 'CCS', destino: '/sobre' },
-  { nome: 'Gestores', destino: '/gestores' },
+  { nome: 'Equipe', destino: '/equipe' },
   { nome: 'Setores', destino: '/setores' },
   { nome: 'Valores', destino: '/valores' },
 ]

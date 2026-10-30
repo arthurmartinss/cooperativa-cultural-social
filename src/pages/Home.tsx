@@ -53,6 +53,19 @@ export default function Home() {
 
       <div id="setores" className="scroll-mt-20"><MapaCooperacao /></div>
 
+      <section className="home-team section-pad">
+        <Reveal className="site-container home-team-grid">
+          <div>
+            <p className="eyebrow">Nossa equipe</p>
+            <h2>Quem faz a CCS</h2>
+          </div>
+          <div>
+            <p>Conheça as pessoas que fazem parte da cooperativa, da gestão às equipes de cada setor.</p>
+            <Link to="/equipe" className="home-text-link">Conhecer a equipe <span aria-hidden="true">→</span></Link>
+          </div>
+        </Reveal>
+      </section>
+
       <GaleriaEditorial eyebrow="Nossa inspiração" title="Pessoas, lugares e ideias em movimento" description="Estas imagens ajudam a imaginar os encontros, a expressão e o trabalho em conjunto que queremos construir na CCS." photos={fotografiasHome} layout="grid" action={{ label: 'Explorar curadoria', to: '/curadoria' }} />
 
       <section className="home-updates section-pad">

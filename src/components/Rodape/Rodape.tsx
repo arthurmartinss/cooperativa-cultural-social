@@ -14,7 +14,7 @@ export default function Rodape() {
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand-yellow">Navegue pela CCS</p>
           <nav aria-label="Navegação do rodapé" className="mt-5 grid grid-cols-2 gap-x-6 gap-y-4 text-sm font-semibold text-white/80">
             <Link to="/sobre" className="hover:text-white">CCS</Link>
-            <Link to="/gestores" className="hover:text-white">Gestores</Link>
+            <Link to="/equipe" className="hover:text-white">Equipe</Link>
             <Link to="/setores" className="hover:text-white">Setores</Link>
             <Link to="/valores" className="hover:text-white">Valores</Link>
             <Link to="/eventos" className="hover:text-white">Eventos</Link>

@@ -1,0 +1,26 @@
+.equipe-hero { background: var(--color-brand-surface); }
+.equipe-hero h1 { max-width: 12ch; margin-top: 1rem; color: var(--color-brand-ink); font-size: clamp(2.8rem, 5.7vw, 5rem); font-weight: 650; line-height: 1.06; letter-spacing: -0.065em; }
+.equipe-intro { max-width: 41rem; margin-top: 1.4rem; color: var(--color-brand-muted); font-size: clamp(1rem, 1.5vw, 1.15rem); line-height: 1.75; }
+.equipe-atalhos { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2.5rem; }
+.equipe-atalhos a { border: 1px solid var(--color-brand-line); border-radius: 999px; background: var(--color-brand-paper); padding: 0.6rem 0.95rem; color: var(--color-brand-ink); font-size: 0.82rem; font-weight: 650; transition: border-color 180ms ease, background-color 180ms ease; }
+.equipe-atalhos a:hover { border-color: var(--color-brand-action); background: var(--color-brand-sky); }
+.equipe-grupo { scroll-margin-top: 5rem; border-top: 1px solid var(--color-brand-line); background: var(--color-brand-page); }
+.equipe-grupo-gestao { border-top: 0; background: var(--color-brand-paper); }
+.equipe-grupo:nth-of-type(even):not(.equipe-grupo-gestao) { background: var(--color-brand-paper); }
+.equipe-grupo-cabecalho { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; margin-bottom: 2rem; }
+.equipe-grupo h2 { margin-top: 0.55rem; color: var(--color-brand-ink); font-size: clamp(1.9rem, 3.4vw, 2.8rem); font-weight: 650; line-height: 1.13; letter-spacing: -0.052em; }
+.equipe-grupo-cabecalho p:not(.eyebrow) { margin-top: 0.65rem; color: var(--color-brand-muted); line-height: 1.65; }
+.equipe-setor-link { flex: none; color: var(--color-brand-action); font-size: 0.9rem; font-weight: 700; }
+.equipe-setor-link:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+.equipe-grade { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(0.8rem, 2vw, 1.3rem); }
+.equipe-pessoa { min-width: 0; overflow: hidden; border: 1px solid var(--color-brand-line); border-radius: 1.15rem; background: var(--color-brand-paper); }
+.equipe-grupo:nth-of-type(even) .equipe-pessoa, .equipe-grupo-gestao .equipe-pessoa { background: var(--color-brand-page); }
+.equipe-pessoa-foto { aspect-ratio: 4 / 4.2; overflow: hidden; background: var(--color-brand-sky); }
+.equipe-pessoa-foto img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+.equipe-pessoa-info { min-height: 6.3rem; padding: 1.2rem 1.25rem 1.35rem; }
+.equipe-pessoa h3 { color: var(--color-brand-ink); font-size: clamp(1rem, 1.4vw, 1.2rem); font-weight: 700; line-height: 1.3; letter-spacing: -0.025em; }
+.equipe-pessoa p { margin-top: 0.35rem; color: var(--color-brand-muted); font-size: 0.88rem; line-height: 1.45; }
+@media (max-width: 850px) { .equipe-grade { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 680px) { .equipe-grade { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 540px) { .equipe-grupo-cabecalho { align-items: start; flex-direction: column; gap: 0.8rem; } .equipe-grade { grid-template-columns: 1fr; gap: 0.7rem; } .equipe-pessoa { display: flex; min-height: 7.5rem; } .equipe-pessoa-foto { flex: 0 0 7.5rem; aspect-ratio: auto; } .equipe-pessoa-info { display: flex; min-height: 0; flex-direction: column; justify-content: center; padding: 1rem; } }
+@media (prefers-reduced-motion: reduce) { .equipe-atalhos a { transition: none; } }
