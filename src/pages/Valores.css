@@ -1,0 +1,23 @@
+.valores-hero { background: var(--color-brand-surface); }
+.valores-hero h1 { max-width: 14ch; margin-top: 1rem; color: var(--color-brand-ink); font-size: clamp(2.8rem, 5.7vw, 5rem); font-weight: 650; line-height: 1.06; letter-spacing: -0.065em; }
+.valores-hero > .site-container > p:last-child { max-width: 42rem; margin-top: 1.4rem; color: var(--color-brand-muted); font-size: clamp(1rem, 1.5vw, 1.15rem); line-height: 1.75; }
+.valores-destaque { background: var(--color-brand-paper); }
+.valores-destaque-grid { display: grid; align-items: center; gap: clamp(2rem, 5vw, 5rem); }
+.valores-foto figure { overflow: hidden; border-radius: 1.4rem; background: var(--color-brand-surface); }
+.valores-foto img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.valores-foto figcaption { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; padding: 0.9rem 1rem; color: var(--color-brand-muted); font-size: 0.82rem; }
+.valores-foto figcaption small { font-size: 0.7rem; }
+.valores-foto figcaption a { text-decoration: underline; text-underline-offset: 2px; }
+.valores-destaque-copy h2 { margin-top: 0.8rem; color: var(--color-brand-ink); font-size: clamp(2.4rem, 4.5vw, 4rem); font-weight: 650; line-height: 1.05; letter-spacing: -0.06em; }
+.valores-destaque-copy > p:last-child { max-width: 34rem; margin-top: 1.2rem; color: var(--color-brand-muted); font-size: clamp(1rem, 1.5vw, 1.15rem); line-height: 1.8; }
+.valores-lista { border-top: 1px solid var(--color-brand-line); background: var(--color-brand-surface); }
+.valores-lista-heading { margin-bottom: 2rem; }
+.valores-lista-heading h2 { max-width: 16ch; margin-top: 0.7rem; color: var(--color-brand-ink); font-size: clamp(2rem, 4vw, 3rem); font-weight: 650; line-height: 1.1; letter-spacing: -0.055em; }
+.valores-grade { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.valores-card { min-height: 13rem; border: 1px solid var(--color-brand-line); border-radius: 1rem; background: var(--color-brand-paper); padding: 1.5rem; }
+.valores-card > span { color: var(--color-brand-action); font-size: 0.75rem; font-weight: 800; letter-spacing: 0.16em; }
+.valores-card h3 { margin-top: 1.35rem; color: var(--color-brand-ink); font-size: 1.35rem; font-weight: 700; letter-spacing: -0.035em; }
+.valores-card p { margin-top: 0.55rem; color: var(--color-brand-muted); line-height: 1.7; }
+@media (min-width: 900px) { .valores-destaque-grid { grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); } }
+@media (max-width: 760px) { .valores-grade { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .valores-grade { grid-template-columns: 1fr; } .valores-card { min-height: auto; } .valores-foto figcaption { align-items: flex-start; flex-direction: column; } }

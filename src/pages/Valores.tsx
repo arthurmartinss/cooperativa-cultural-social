@@ -1,24 +1,66 @@
+import Reveal from '../components/Reveal/Reveal'
 import { valores } from '../data/valores'
+import { fotografiaCooperacao, srcSetResponsivo, urlOtimizada } from '../data/fotografiasSelecionadas'
+import './Valores.css'
 
 export default function Valores() {
+  const [cooperacao, ...demaisValores] = valores
+
   return (
     <main>
-      <section className="bg-brand-surface px-5 py-20 sm:px-8 sm:py-28">
-        <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-action">O que nos guia</p>
-          <h1 className="mt-5 max-w-4xl text-4xl font-semibold tracking-tight text-brand-ink sm:text-6xl">O jeito CCS de trabalhar</h1>
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-brand-muted">Esses valores ajudam a decidir como criamos, convivemos e trabalhamos em equipe.</p>
+      <section className="valores-hero section-pad">
+        <Reveal className="site-container">
+          <p className="eyebrow">O que nos guia</p>
+          <h1>O jeito CCS de trabalhar</h1>
+          <p>Esses valores ajudam a decidir como criamos, convivemos e trabalhamos em equipe.</p>
+        </Reveal>
+      </section>
+
+      <section className="valores-destaque section-pad" aria-labelledby="valor-cooperacao-title">
+        <div className="site-container valores-destaque-grid">
+          <Reveal className="valores-foto">
+            <figure>
+              <img
+                src={urlOtimizada(fotografiaCooperacao, 1440)}
+                srcSet={srcSetResponsivo(fotografiaCooperacao)}
+                sizes="(max-width: 800px) 100vw, 55vw"
+                width={fotografiaCooperacao.largura}
+                height={fotografiaCooperacao.altura}
+                alt={fotografiaCooperacao.alt}
+                loading="eager"
+                decoding="async"
+              />
+              <figcaption>
+                <span>{fotografiaCooperacao.legenda}</span>
+                <small>Foto de <a href={fotografiaCooperacao.perfilUrl} target="_blank" rel="noreferrer">{fotografiaCooperacao.fotografo}</a> no <a href={fotografiaCooperacao.fotoUrl} target="_blank" rel="noreferrer">Unsplash</a></small>
+              </figcaption>
+            </figure>
+          </Reveal>
+          {cooperacao && (
+            <Reveal className="valores-destaque-copy" delay={0.1}>
+              <p className="eyebrow">Nosso primeiro princípio</p>
+              <h2 id="valor-cooperacao-title">{cooperacao.nome}</h2>
+              <p>{cooperacao.descricao} Na CCS, diferentes áreas se juntam para transformar ideias em ações.</p>
+            </Reveal>
+          )}
         </div>
       </section>
-      <section className="px-5 py-20 sm:px-8 sm:py-24">
-        <div className="mx-auto grid max-w-7xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {valores.map((valor, indice) => (
-            <article key={valor.nome} className="rounded-2xl border border-brand-line bg-brand-paper p-7 shadow-sm">
-              <span aria-hidden="true" className="text-xs font-bold tracking-[0.2em] text-brand-action">{String(indice + 1).padStart(2, '0')}</span>
-              <h2 className="mt-5 text-2xl font-bold text-brand-ink">{valor.nome}</h2>
-              <p className="mt-3 leading-7 text-brand-muted">{valor.descricao}</p>
-            </article>
-          ))}
+
+      <section className="valores-lista section-pad" aria-labelledby="valores-lista-title">
+        <div className="site-container">
+          <Reveal className="valores-lista-heading">
+            <p className="eyebrow">Princípios em prática</p>
+            <h2 id="valores-lista-title">O que orienta nossas escolhas</h2>
+          </Reveal>
+          <div className="valores-grade">
+            {demaisValores.map((valor, indice) => (
+              <article key={valor.nome} className="valores-card">
+                <span aria-hidden="true">{String(indice + 2).padStart(2, '0')}</span>
+                <h3>{valor.nome}</h3>
+                <p>{valor.descricao}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
     </main>

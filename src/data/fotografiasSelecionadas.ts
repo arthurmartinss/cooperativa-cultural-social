@@ -22,6 +22,18 @@ export const fotoDestaqueHome: FotografiaSelecionada = {
   perfilUrl: 'https://unsplash.com/@silverkblack?utm_source=cooperativa_cultural_social&utm_medium=referral',
 }
 
+export const fotografiaCooperacao: FotografiaSelecionada = {
+  id: 'ABVE1cyT7hk',
+  alt: 'Pessoas juntam as mãos no centro de uma roda, em um gesto de cooperação.',
+  legenda: 'A cooperação começa quando cada pessoa participa',
+  largura: 5760,
+  altura: 3840,
+  rawUrl: 'https://images.unsplash.com/photo-1542323228-002ac256e7b8?ixid=M3wxMTAzOTQ1fDB8MXxzZWFyY2h8M3x8Y29tbXVuaXR5JTIwd29ya2luZyUyMHRvZ2V0aGVyJTIwb24lMjBhJTIwcHJvamVjdHxlbnwxfDB8fHwxNzkzMzMxOTkxfDA&ixlib=rb-4.1.0',
+  fotoUrl: 'https://unsplash.com/photos/people-with-hands-gathered-in-the-middle-ABVE1cyT7hk?utm_source=cooperativa_cultural_social&utm_medium=referral',
+  fotografo: 'Camylla Battani',
+  perfilUrl: 'https://unsplash.com/@camylla93?utm_source=cooperativa_cultural_social&utm_medium=referral',
+}
+
 export const fotografiasHome: FotografiaSelecionada[] = [
   {
     id: 'OerQvrNvozU',
