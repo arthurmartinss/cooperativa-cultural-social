@@ -1,10 +1,9 @@
 import Reveal from '../components/Reveal/Reveal'
-import fotoIntegracao1 from '../assets/eventos/integracao/integracao-outubro.jpeg'
-import fotoIntegracao2 from '../assets/eventos/integracao/integracao-outubro2.jpeg'
 import fotoPrincipalMis from '../assets/eventos/visita-mis/foto-principal-visita.jpeg'
 import fotoGrupoMis from '../assets/eventos/visita-mis/foto.jpeg'
 import fotoExposicaoMis1 from '../assets/eventos/visita-mis/museu-quadro.jpeg'
 import fotoExposicaoMis2 from '../assets/eventos/visita-mis/museu-quadro2.jpeg'
+import { integracoes } from '../data/integracoes'
 import './Eventos.css'
 
 export default function Eventos() {
@@ -42,19 +41,24 @@ export default function Eventos() {
         </div>
       </section>
 
-      <section className="eventos-integracao section-pad" aria-labelledby="eventos-integracao-title">
-        <div className="site-container integracao-grid">
-          <Reveal className="integracao-copy">
-            <p className="eyebrow">Integração</p>
-            <h2 id="eventos-integracao-title">Boas-vindas a novos integrantes</h2>
-            <p>Um momento para receber quem está chegando à CCS, se conhecer e começar a construir vínculos na cooperativa.</p>
-          </Reveal>
-          <div className="integracao-galeria" aria-label="Registros da integração de novos integrantes">
-            <Reveal><img src={fotoIntegracao1} alt="Novos integrantes da CCS reunidos durante a integração" loading="lazy" decoding="async" /></Reveal>
-            <Reveal delay={0.1}><img src={fotoIntegracao2} alt="Pessoas conversando durante o encontro de integração da CCS" loading="lazy" decoding="async" /></Reveal>
+      {integracoes.map((integracao, index) => (
+        <section key={`${integracao.periodo}-${integracao.titulo}`} className="eventos-integracao section-pad" aria-labelledby={`eventos-integracao-title-${index}`}>
+          <div className="site-container integracao-grid">
+            <Reveal className="integracao-copy">
+              <p className="eyebrow">Integração · {integracao.periodo}</p>
+              <h2 id={`eventos-integracao-title-${index}`}>{integracao.titulo}</h2>
+              <p>{integracao.resumo}</p>
+            </Reveal>
+            <div className="integracao-galeria" aria-label={`Registros da integração de ${integracao.periodo}`}>
+              {integracao.fotos.map((foto, fotoIndex) => (
+                <Reveal key={foto.src} delay={fotoIndex * 0.1}>
+                  <img src={foto.src} alt={foto.alt} loading="lazy" decoding="async" />
+                </Reveal>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ))}
     </main>
   )
 }

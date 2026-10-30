@@ -74,7 +74,7 @@ my-app/
 
 - **Setores:** `src/data/departamentos.ts`. Todas as páginas usam o modelo `src/pages/Departamento.tsx`.
 - **Integrantes e cargos:** `src/data/integrantes.ts`; gestores da CCS em `src/data/gestoresCcs.ts`. As fotos locais ficam em `src/assets/<setor>/`.
-- **Eventos e integrações:** `src/pages/Eventos.tsx`; as fotos ficam em `src/assets/eventos/`.
+- **Eventos e integrações:** eventos em `src/pages/Eventos.tsx`; integrações por mês em `src/data/integracoes.ts`, com as fotos em `src/assets/eventos/`.
 - **Fotos do site:** `src/data/destaquesDepartamentos.ts` e `src/data/fotografiasSelecionadas.ts`, com texto alternativo e crédito.
 - **Rotas:** `src/routes/Routes.tsx`.
 
