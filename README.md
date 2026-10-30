@@ -13,7 +13,7 @@ A CCS reúne pessoas de diferentes áreas para criar projetos culturais e sociai
 | [Equipe](https://cooperativa-cultural-social.vercel.app/equipe) | Gestores da CCS e integrantes de cada setor, com fotos e cargos. |
 | [Setores](https://cooperativa-cultural-social.vercel.app/setores) | Marketing, Recursos Humanos, TI, Esporte, Artes e Turismo. Cada setor tem sua página e seu organograma. |
 | [Valores](https://cooperativa-cultural-social.vercel.app/valores) | Princípios que orientam o trabalho da cooperativa. |
-| [Eventos](https://cooperativa-cultural-social.vercel.app/eventos) | Espaço para divulgar eventos confirmados, entregas e resultados. |
+| [Eventos](https://cooperativa-cultural-social.vercel.app/eventos) | Registros da visita ao MIS e da integração de novos integrantes. |
 | [Curadoria](https://cooperativa-cultural-social.vercel.app/curadoria) | Pesquisa e seleção de imagens para possíveis usos no projeto. |
 
 As informações de alguns setores e os próximos eventos ainda estão sendo preparados pela equipe. O site mostra esse estado sem anunciar atividades que não foram confirmadas.
@@ -74,7 +74,7 @@ my-app/
 
 - **Setores:** `src/data/departamentos.ts`. Todas as páginas usam o modelo `src/pages/Departamento.tsx`.
 - **Integrantes e cargos:** `src/data/integrantes.ts`; gestores da CCS em `src/data/gestoresCcs.ts`. As fotos locais ficam em `src/assets/<setor>/`.
-- **Eventos e entregas:** `src/data/atualizacoes.ts`. Inclua somente informações confirmadas pela equipe.
+- **Eventos e integrações:** `src/pages/Eventos.tsx`; as fotos ficam em `src/assets/eventos/`.
 - **Fotos do site:** `src/data/destaquesDepartamentos.ts` e `src/data/fotografiasSelecionadas.ts`, com texto alternativo e crédito.
 - **Rotas:** `src/routes/Routes.tsx`.
 
