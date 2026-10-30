@@ -44,6 +44,11 @@
 .home-values .home-values-eyebrow { color: #fec504; }
 .home-values h2 { max-width: 43rem; }
 .home-values p:not(.eyebrow) { max-width: 39rem; margin-top: 1.4rem; color: rgb(255 255 255 / 78%); font-size: 1.1rem; line-height: 1.75; }
+.home-values-top { display: grid; align-items: center; gap: 2rem; }
+.home-values-photo { overflow: hidden; border: 1px solid rgb(255 255 255 / 22%); border-radius: 1.15rem; background: rgb(255 255 255 / 8%); }
+.home-values-photo img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+.home-values-photo figcaption { padding: 0.65rem 0.85rem; color: rgb(255 255 255 / 68%); font-size: 0.7rem; }
+.home-values-photo a { text-decoration: underline; text-underline-offset: 2px; }
 .home-values ul { display: flex; flex-wrap: wrap; gap: 0.7rem; max-width: 56rem; margin-top: 2rem; }
 .home-values li { border: 1px solid rgb(255 255 255 / 28%); border-radius: 99px; padding: 0.55rem 0.95rem; font-size: 0.86rem; font-weight: 600; }
 .home-values-link { display: inline-flex; gap: 0.5rem; margin-top: 2rem; color: #fec504; font-size: 0.94rem; font-weight: 700; }
@@ -60,6 +65,6 @@
 .home-contact-link small { color: var(--color-brand-muted); font-size: 0.75rem; }
 .home-contact-link strong { overflow-wrap: anywhere; font-size: clamp(0.85rem, 1.3vw, 1rem); font-weight: 700; }
 .home-contact-link > span:last-child { color: var(--color-brand-action); font-size: 1.15rem; }
-@media (min-width: 900px) { .home-hero-grid { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); } .home-about-grid, .home-team-grid, .home-contact-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); gap: 5rem; } .home-updates-grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.8fr); gap: 5rem; } }
+@media (min-width: 900px) { .home-hero-grid { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); } .home-about-grid, .home-team-grid, .home-contact-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); gap: 5rem; } .home-updates-grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.8fr); gap: 5rem; } .home-values-top { grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.72fr); gap: 4rem; } }
 @media (max-width: 600px) { .home-hero { padding-top: 4.5rem; } .home-hero-figure { min-height: 25rem; } .home-hero-figure figcaption { padding: 1.5rem; } .home-about { margin-top: -2rem; border-radius: 2rem 2rem 0 0; } }
 @media (prefers-reduced-motion: reduce) { .home-hero-primary, .home-hero-secondary, .home-contact-link { transition: none; } }

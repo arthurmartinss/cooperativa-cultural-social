@@ -7,7 +7,7 @@ import GaleriaEditorial from '../components/GaleriaEditorial/GaleriaEditorial'
 import MapaCooperacao from '../components/MapaCooperacao/MapaCooperacao'
 import Reveal from '../components/Reveal/Reveal'
 import { contatoCcs } from '../data/contato'
-import { fotoDestaqueHome, fotografiasHome, srcSetResponsivo, urlOtimizada } from '../data/fotografiasSelecionadas'
+import { fotoDestaqueHome, fotografiaCooperacao, fotografiasHome, srcSetResponsivo, urlOtimizada } from '../data/fotografiasSelecionadas'
 import { valores } from '../data/valores'
 import './Home.css'
 
@@ -88,9 +88,26 @@ export default function Home() {
 
       <section id="valores" className="home-values section-pad scroll-mt-20">
         <Reveal className="site-container">
-          <p className="eyebrow home-values-eyebrow">O que nos move</p>
-          <h2>Fazer junto muda o que é possível</h2>
-          <p>Cooperação, respeito e inclusão orientam cada projeto. A cultura abre o caminho; as pessoas dão sentido a ele.</p>
+          <div className="home-values-top">
+            <div>
+              <p className="eyebrow home-values-eyebrow">O que nos move</p>
+              <h2>Fazer junto muda o que é possível</h2>
+              <p>Cooperação, respeito e inclusão orientam cada projeto. A cultura abre o caminho; as pessoas dão sentido a ele.</p>
+            </div>
+            <figure className="home-values-photo">
+              <img
+                src={urlOtimizada(fotografiaCooperacao, 1080)}
+                srcSet={srcSetResponsivo(fotografiaCooperacao)}
+                sizes="(max-width: 900px) 100vw, 40vw"
+                width={fotografiaCooperacao.largura}
+                height={fotografiaCooperacao.altura}
+                alt={fotografiaCooperacao.alt}
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>Foto de <a href={fotografiaCooperacao.perfilUrl} target="_blank" rel="noreferrer">{fotografiaCooperacao.fotografo}</a> · <a href={fotografiaCooperacao.fotoUrl} target="_blank" rel="noreferrer">Unsplash</a></figcaption>
+            </figure>
+          </div>
           <ul aria-label="Valores da CCS">{valores.map((valor) => <li key={valor.nome}>{valor.nome}</li>)}</ul>
           <Link to="/valores" className="home-values-link">Todos os nossos valores <span aria-hidden="true">→</span></Link>
         </Reveal>
