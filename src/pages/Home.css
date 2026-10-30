@@ -48,6 +48,18 @@
 .home-values li { border: 1px solid rgb(255 255 255 / 28%); border-radius: 99px; padding: 0.55rem 0.95rem; font-size: 0.86rem; font-weight: 600; }
 .home-values-link { display: inline-flex; gap: 0.5rem; margin-top: 2rem; color: #fec504; font-size: 0.94rem; font-weight: 700; }
 .home-values-link:hover { color: #fff; }
-@media (min-width: 900px) { .home-hero-grid { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); } .home-about-grid, .home-team-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); gap: 5rem; } .home-updates-grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.8fr); gap: 5rem; } }
+.home-contact { background: var(--color-brand-surface); }
+.home-contact-grid { display: grid; align-items: center; gap: 2.5rem; }
+.home-contact h2 { margin-top: 0.8rem; color: var(--color-brand-ink); font-size: clamp(2rem, 4vw, 3.35rem); font-weight: 650; line-height: 1.1; letter-spacing: -0.055em; }
+.home-contact-grid > div:first-child > p:last-child { max-width: 28rem; margin-top: 1.1rem; color: var(--color-brand-muted); font-size: 1.05rem; line-height: 1.75; }
+.home-contact-links { display: grid; gap: 0.8rem; }
+.home-contact-link { display: flex; min-width: 0; align-items: center; gap: 1rem; border: 1px solid var(--color-brand-line); border-radius: 1rem; background: var(--color-brand-paper); padding: 1.1rem 1.25rem; color: var(--color-brand-ink); transition: border-color 180ms ease, transform 180ms ease; }
+.home-contact-link:hover { border-color: var(--color-brand-action); transform: translateY(-2px); }
+.home-contact-link > svg { flex: none; color: var(--color-brand-action); }
+.home-contact-link > span:nth-child(2) { display: flex; min-width: 0; flex: 1; flex-direction: column; gap: 0.15rem; }
+.home-contact-link small { color: var(--color-brand-muted); font-size: 0.75rem; }
+.home-contact-link strong { overflow-wrap: anywhere; font-size: clamp(0.85rem, 1.3vw, 1rem); font-weight: 700; }
+.home-contact-link > span:last-child { color: var(--color-brand-action); font-size: 1.15rem; }
+@media (min-width: 900px) { .home-hero-grid { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); } .home-about-grid, .home-team-grid, .home-contact-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); gap: 5rem; } .home-updates-grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.8fr); gap: 5rem; } }
 @media (max-width: 600px) { .home-hero { padding-top: 4.5rem; } .home-hero-figure { min-height: 25rem; } .home-hero-figure figcaption { padding: 1.5rem; } .home-about { margin-top: -2rem; border-radius: 2rem 2rem 0 0; } }
-@media (prefers-reduced-motion: reduce) { .home-hero-primary, .home-hero-secondary { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .home-hero-primary, .home-hero-secondary, .home-contact-link { transition: none; } }

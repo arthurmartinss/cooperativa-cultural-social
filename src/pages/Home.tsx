@@ -1,10 +1,12 @@
 import { useRef } from 'react'
 import { useReducedMotion, useScroll, useTransform } from 'motion/react'
 import * as m from 'motion/react-m'
+import { LuInstagram, LuMail } from 'react-icons/lu'
 import { Link } from 'react-router-dom'
 import GaleriaEditorial from '../components/GaleriaEditorial/GaleriaEditorial'
 import MapaCooperacao from '../components/MapaCooperacao/MapaCooperacao'
 import Reveal from '../components/Reveal/Reveal'
+import { contatoCcs } from '../data/contato'
 import { fotoDestaqueHome, fotografiasHome, srcSetResponsivo, urlOtimizada } from '../data/fotografiasSelecionadas'
 import { valores } from '../data/valores'
 import './Home.css'
@@ -91,6 +93,28 @@ export default function Home() {
           <p>Cooperação, respeito e inclusão orientam cada projeto. A cultura abre o caminho; as pessoas dão sentido a ele.</p>
           <ul aria-label="Valores da CCS">{valores.map((valor) => <li key={valor.nome}>{valor.nome}</li>)}</ul>
           <Link to="/valores" className="home-values-link">Todos os nossos valores <span aria-hidden="true">→</span></Link>
+        </Reveal>
+      </section>
+
+      <section id="contato" className="home-contact section-pad" aria-labelledby="home-contact-title">
+        <Reveal className="site-container home-contact-grid">
+          <div>
+            <p className="eyebrow">Fale com a CCS</p>
+            <h2 id="home-contact-title">Vamos conversar?</h2>
+            <p>Acompanhe o que estamos criando ou escreva para a equipe.</p>
+          </div>
+          <div className="home-contact-links">
+            <a href={contatoCcs.instagram} target="_blank" rel="noopener noreferrer" className="home-contact-link">
+              <LuInstagram aria-hidden="true" size={25} />
+              <span><small>Instagram</small><strong>{contatoCcs.instagramUsuario}</strong></span>
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a href={`mailto:${contatoCcs.email}`} className="home-contact-link">
+              <LuMail aria-hidden="true" size={25} />
+              <span><small>E-mail</small><strong>{contatoCcs.email}</strong></span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
         </Reveal>
       </section>
     </main>
